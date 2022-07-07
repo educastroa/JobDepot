@@ -33,9 +33,11 @@ export default function Navbar() {
                 <a className="nav-link disabled">Disabled</a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
+            <form className="d-flex" role="search" action="/api/users/login" method="POST">
+              <input className="form-control me-2" name="email" type="email" placeholder="Email" aria-label="Search"></input>
+              <input className="form-control me-2" name="password" type="password" placeholder="Password" aria-label="Search"></input>
                 <button className="btn btn-outline-success" type="submit">Login</button>
+                <button className="btn btn-outline-success" type="submit">Register</button>
             </form>
           </div>
         </div>
