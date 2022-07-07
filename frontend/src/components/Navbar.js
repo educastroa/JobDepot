@@ -2,9 +2,8 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
-export default function Sidebar() {
+export default function Navbar() {
   return (
-    <main className="App-link">
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">Navbar</a>
@@ -36,11 +35,10 @@ export default function Sidebar() {
             </ul>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                <button className="btn btn-outline-success" type="submit">Search</button>
+                <button className="btn btn-outline-success" type="submit">Login</button>
             </form>
           </div>
         </div>
       </nav>
-    </main>
   );
 }

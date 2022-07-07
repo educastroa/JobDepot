@@ -3,13 +3,13 @@ import './App.css';
 import Users from './components/Users';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
-import Sidebar from './components/sidebar';
-import Navbar from './components/navbar';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <main>
-      <header>
+      <header class="App-header">
         <strong>Job search.com</strong>
       </header>
 
