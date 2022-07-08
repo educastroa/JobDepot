@@ -1,10 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import Users from './components/Users';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
-import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar';
+import logo from "./logo.svg";
+import "./App.css";
+import Users from "./components/Users";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle";
+import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -14,13 +14,10 @@ function App() {
       </header>
 
       <section className="sidebar">
-        < Navbar />
-        <img
-          className="sidebar--centered"
-
-        />
+        <Navbar />
+        <img className="sidebar--centered" />
       </section>
-      <Sidebar/>
+      <Sidebar />
       <Users />
       <footer>&copy; Copyright 2022 </footer>
     </main>
@@ -28,5 +25,3 @@ function App() {
 }
 
 export default App;
-
-

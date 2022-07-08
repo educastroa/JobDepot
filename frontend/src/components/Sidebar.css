@@ -1,0 +1,33 @@
+.fs-5.fw-semibold {
+ color: whitesmoke;
+}
+
+.btn.btn-toggle.align-items-center.rounded.collapsed:hover {
+  background-color: #9DC88D;
+
+}
+
+.btn.btn-toggle.align-items-center.rounded {
+color: whitesmoke;
+}
+
+.btn.btn-toggle.align-items-center.rounded.collapsed {
+  color: whitesmoke
+}
+
+.link-dark.rounded:hover {
+  background-color: #9DC88D;
+  color: whitesmoke;
+}
+
+.link-dark.rounded {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.flex-shrink-0.p-3{
+background-color: #4D774E;
+position: sticky;
+top: 0;
+color: whitesmoke;
+}
