@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Searchbar from "./components/Searchbar";
 
 function App() {
   return (
@@ -17,7 +18,12 @@ function App() {
         <Navbar />
         <img className="sidebar--centered" />
       </section>
-      <Sidebar />
+      <div className="sidebar-searchbar">
+        <Sidebar />
+        <div className="searchbar">
+          <Searchbar />
+        </div>
+      </div>
       <Footer />
     </main>
   );
