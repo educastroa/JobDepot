@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,8 +19,7 @@ function App() {
         <img className="sidebar--centered" />
       </section>
       <Sidebar />
-      <Users />
-      <footer>&copy; Copyright 2022 </footer>
+      <Footer />
     </main>
   );
 }
