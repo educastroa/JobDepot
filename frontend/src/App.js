@@ -6,13 +6,12 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   return (
     <main>
-      <header className="App-header">
-        <strong>Job search.com</strong>
-      </header>
+      <Header />
 
       <section className="sidebar">
         <Navbar />
