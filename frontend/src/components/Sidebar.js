@@ -85,7 +85,7 @@ export default function Sidebar() {
           >
             Account
           </button>
-          <div className="collapse show" id="account-collapse" style={{}}>
+          <div className="collapse" id="account-collapse" style={{}}>
             <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li>
                 <a href="#" className="link-dark rounded">
