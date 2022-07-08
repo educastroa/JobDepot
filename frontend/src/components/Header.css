@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Carter+One&family=Montserrat:ital,wght@1,500;1,800&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap');
+
+.pt-5.pb-3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 1000;
+  font-size: 100px;
+  color: #F1B24A;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

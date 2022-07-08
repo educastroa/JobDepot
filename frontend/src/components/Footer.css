@@ -1,8 +1,13 @@
 .main-footer {
+  display: flex;
   color: white;
   background-color: #4D774E;
-  margin-top: 11em;
-  padding-top: 3em;
-  position: relative;
+  margin-top: 5em;
+  padding-top: 1em;
+  padding-bottom: 3em;
   width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
