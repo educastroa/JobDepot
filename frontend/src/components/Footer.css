@@ -3,17 +3,38 @@
   color: white;
   background-color: #4D774E;
   margin-top: 5em;
-  padding-top: 1em;
+  padding-top: 3em;
+  padding-bottom: 3em;
   width: 100%;
   position: sticky;
   left: 0;
   bottom: 0;
   right: 0;
+  flex-direction: row;
 }
 
-.container {
+.row {
   display: flex;
-  flex-direction: column;
-  padding-bottom: 0;
+  justify-content: space-around;
+  align-items: center;
+
+
+
+}
+.link-light {
+  text-decoration: none;
+}
+
+.link-light:hover {
+  color: #F1B24A
+}
+
+.row-copyright {
+  background-color: #4D774E;
+  color: white;
+  width: 100%;
+  display: flex;
   justify-content: center;
-  align-items: center;}
+  padding-bottom: 1em;
+  font-size: small;
+}
