@@ -1,9 +1,10 @@
 .search-bar {
-  border: 5px;
+  border: 1px solid;
   padding: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 
 }
 
