@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Searchbar from "./components/Searchbar";
+import ResumeBuilder from "./components/ResumeBuilder";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <div className="searchbar">
           <Searchbar />
         </div>
+        {/* <ResumeBuilder /> */}
       </div>
       <Footer />
     </main>
