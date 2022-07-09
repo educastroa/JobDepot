@@ -49,3 +49,11 @@
   padding-left: 30%;
   ;
 }
+
+.salary-searchbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30%;
+  ;
+}
