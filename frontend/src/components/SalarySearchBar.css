@@ -1,0 +1,19 @@
+.salary-search-bar {
+  border: 1px solid;
+  padding: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.salary-search-bar:hover {
+  box-shadow: 5px 5px 5px 5px lightblue;
+
+}
+
+.btn {
+  display: flex;
+  margin-left: 10px;
+}

@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Searchbar from "./components/Searchbar";
 import ResumeBuilder from "./components/ResumeBuilder";
+import SalarySearchBar from "./components/SalarySearchBar";
 
 function App() {
   return (
@@ -21,10 +22,13 @@ function App() {
       </section>
       <div className="sidebar-searchbar">
         <Sidebar />
-        <div className="searchbar">
+        {/* <div className="searchbar">
           <Searchbar />
-        </div>
+        </div> */}
         {/* <ResumeBuilder /> */}
+        <div className="salary-searchbar">
+          <SalarySearchBar />
+        </div>
       </div>
       <Footer />
     </main>
