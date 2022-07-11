@@ -29,7 +29,7 @@ module.exports = (db) => {
   router.post("/login", (req, res) => {
     const { email, password } = req.body;
     const queryString = `SELECT * FROM users WHERE email = $1;`;
-
+    console.log(req.body);
     db.query(queryString, [email])
       .then((data) => {
         const user = data.rows[0];

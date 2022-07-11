@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Searchbar from "./components/Searchbar";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
+import LoginForm from "./components/Login";
 
 
 
@@ -25,13 +26,16 @@ function App() {
       </section>
       <div className="sidebar-searchbar">
         <Sidebar />
+        <section className="w-100 p-4 d-flex justify-content-center pb-4">
+        <LoginForm/>
+        </section>
         {/* <div className="searchbar">
           <Searchbar />
         </div> */}
-        <ResumeBuilder />
+        {/* <ResumeBuilder />
         <div className="salary-searchbar">
           <SalarySearchBar />
-        </div>
+        </div> */}
       </div>
       <Footer />
     </main>
