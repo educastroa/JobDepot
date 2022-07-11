@@ -11,34 +11,36 @@ import Searchbar from "./components/Searchbar";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
 import LoginForm from "./components/Login";
-
+import AppContextProvider from './context';
 
 
 function App() {
 
   return (
-    <main>
-      <Header />
+    <AppContextProvider>
+      <main>
+        <Header />
 
-      <section className="sidebar">
-        <Navbar />
-        <img className="sidebar--centered" />
-      </section>
-      <div className="sidebar-searchbar">
-        <Sidebar />
-        <section className="w-100 p-4 d-flex justify-content-center pb-4">
-        <LoginForm/>
+        <section className="sidebar">
+          <Navbar />
+          <img className="sidebar--centered" />
         </section>
-        {/* <div className="searchbar">
-          <Searchbar />
-        </div> */}
-        {/* <ResumeBuilder />
-        <div className="salary-searchbar">
-          <SalarySearchBar />
-        </div> */}
-      </div>
-      <Footer />
-    </main>
+        <div className="sidebar-searchbar">
+          <Sidebar />
+          <section className="w-100 p-4 d-flex justify-content-center pb-4">
+          <LoginForm/>
+          </section>
+          {/* <div className="searchbar">
+            <Searchbar />
+          </div> */}
+          {/* <ResumeBuilder />
+          <div className="salary-searchbar">
+            <SalarySearchBar />
+          </div> */}
+        </div>
+        <Footer />
+      </main>
+    </AppContextProvider>
   );
 }
 
