@@ -60,6 +60,13 @@ export default function LoginForm() {
                   event.preventDefault();
                   onLogin();
                 }}>
+                  {(user) ?
+                  (<section classNameName="d-flex justify-content-end">
+                       <p>Logged in as {user.name}</p>
+                       <button classNameName="btn btn-outline-success" onClick={() => onLogout()} type="button">Logout</button>
+                      </section>) :
+                  (
+                    <section classNameName="d-flex justify-content-end">
                   <p>Please login to your account</p>
 
                   <div className="form-outline mb-4">
@@ -93,7 +100,7 @@ export default function LoginForm() {
                     <p className="mb-0 me-2">Don't have an account?</p>
                     <button type="button" className="btn btn-outline-danger">Create new</button>
                   </div>
-
+                </section>)}
                 </form>
 
               </div>
