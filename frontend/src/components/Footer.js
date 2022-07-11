@@ -8,15 +8,15 @@ export default function Footer() {
         <div className="container">
           <div className="col">
             <h4>Job Search</h4>
-            <ui className="list-unstyled">
+            <ul className="list-unstyled">
               <li>123-345-6789</li>
               <li>Burlington, Ontario</li>
               <li>321 North Street</li>
-            </ui>
+            </ul>
           </div>
           <div className="col">
             <h4>Community</h4>
-            <ui className="list-unstyled">
+            <ul className="list-unstyled">
               <a href="#" className="link-light">
                 Help/Contact Us
               </a>
@@ -30,11 +30,11 @@ export default function Footer() {
                   Terms of Use
                 </a>
               </li>
-            </ui>
+            </ul>
           </div>
           <div className="col">
             <h4>Work With Us</h4>
-            <ui className="list-unstyled">
+            <ul className="list-unstyled">
               <li>
                 <a href="#" className="link-light">
                   Advertisers
@@ -45,14 +45,12 @@ export default function Footer() {
                   Developers
                 </a>
               </li>
-              <li>
                 <li>
                   <a href="#" className="link-light">
                     Careers
                   </a>
                 </li>
-              </li>
-            </ui>
+            </ul>
           </div>
         </div>
         <hr />

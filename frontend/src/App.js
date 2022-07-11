@@ -11,7 +11,10 @@ import Searchbar from "./components/Searchbar";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
 
+
+
 function App() {
+
   return (
     <main>
       <Header />
@@ -25,7 +28,7 @@ function App() {
         {/* <div className="searchbar">
           <Searchbar />
         </div> */}
-        {/* <ResumeBuilder /> */}
+        <ResumeBuilder />
         <div className="salary-searchbar">
           <SalarySearchBar />
         </div>

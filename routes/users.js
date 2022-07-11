@@ -28,13 +28,11 @@ module.exports = (db) => {
 
   router.post("/login", (req, res) => {
     const { email, password } = req.body;
-    console.log('test',req.body);
     const queryString = `SELECT * FROM users WHERE email = $1;`;
 
     db.query(queryString, [email])
       .then((data) => {
         const user = data.rows[0];
-        console.log(data.rows[0]);
 
         if (!user) {
           return res
@@ -50,7 +48,8 @@ module.exports = (db) => {
             .send({ message: "Password does not match username" });
         }
 
-
+        req.session.user_id = user.id;
+        console.log('test5',user.id);
         return res.status(200).send({ ...user });
       })
       .catch((err) => {
@@ -58,7 +57,32 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/me", (req, res) => {
+    const user_id = req.session.user_id;
+    const queryString = `
+    SELECT *
+    FROM users
+    WHERE id = $1;`;
 
+    db.query(queryString, [user_id])
+      .then((data) => {
+        const user = data.rows[0];
+
+        if (!user) {
+          return res
+            .status(400)
+            .send({ message: "Username not found in database" });
+        }
+
+        return res.json({ ...user });
+      })
+      .catch((err) => res.status(500).json({ error: err.message }));
+  });
+
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.send({ message: "Logged out!" });
+  });
 
   return router;
 };

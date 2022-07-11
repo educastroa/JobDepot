@@ -1,8 +1,7 @@
 -- Users table seeds here (Example)
 ALTER TABLE users
 ALTER COLUMN password
-SET DEFAULT '$2a$12$g7.PYo/Qg0l7pNzodeP7QOT37uGnPZSw.asXfGDKX/h36SOnau/fO';
-
+SET DEFAULT '$2a$12$g7.PYo/Qg0l7pNzodeP7QOT37uGnPZSw.asXfGDKX/h36SOnau/fO';p
 
 INSERT INTO users (name, email) VALUES ('Alice', 'alice@test.com');
 INSERT INTO users (name, email) VALUES ('Kira', 'kira@test.com');
