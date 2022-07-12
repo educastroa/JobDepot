@@ -13,10 +13,10 @@ export default function SearchJob() {
       remoteJobsOnly: false,
   });
   const [jobs, setJobs] = useState([]);
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     const numPage = 1;
     const page = 1;
-
+    event.preventDefault();
     jobSearch({ ...search, numPage, page })
       .then(res => {
         setJobs(res?.data ?? []);
