@@ -1,5 +1,7 @@
+
 import { Fragment, useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
+
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -7,7 +9,9 @@ import Header from "./components/Header";
 import SearchJob from "./components/SearchJob";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
+import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";
+
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 

@@ -1,9 +1,11 @@
 .custom-footer {
   color: white;
   background-color: #4D774E;
+
 }
 
 .link-light:hover {
   color: #F1B24A;
   cursor: pointer;
 }
+

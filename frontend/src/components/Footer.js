@@ -3,10 +3,12 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
+
     <footer className="custom-footer fixed-bottom">
       <div className="container my-4">
         <div className="row align-items-start">
           <div className="col text-center">
+
             <h4>Job Search</h4>
             <ul className="list-unstyled">
               <li>123-345-6789</li>
@@ -45,11 +47,13 @@ export default function Footer() {
                   Developers
                 </a>
               </li>
+
                 <li>
                   <a href="#" className="text-decoration-none fs-5 link-light">
                     Careers
                   </a>
                 </li>
+
             </ul>
           </div>
         </div>
@@ -59,6 +63,8 @@ export default function Footer() {
         &copy;{new Date().getFullYear()} Job Search | All rights reserved |
         Terms Of Service | Privacy
       </div>
+
     </footer>
+
   );
 }

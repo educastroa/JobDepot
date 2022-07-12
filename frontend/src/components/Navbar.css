@@ -1,0 +1,6 @@
+.container-fluid {
+  background-color: brown;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
