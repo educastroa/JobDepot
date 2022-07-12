@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Users from "./components/Users";
 import "bootstrap/dist/css/bootstrap.css";
@@ -10,29 +9,26 @@ import Header from "./components/Header";
 import Searchbar from "./components/Searchbar";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
-
-
+import { Routes, Route } from "react-router-dom";
+import LoginForm from "./components/Login";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
-
   return (
     <main>
+      <Navbar />
       <Header />
-
       <section className="sidebar">
-        <Navbar />
         <img className="sidebar--centered" />
       </section>
-      <div className="sidebar-searchbar">
-        <Sidebar />
-        {/* <div className="searchbar">
-          <Searchbar />
-        </div> */}
-        <ResumeBuilder />
-        <div className="salary-searchbar">
-          <SalarySearchBar />
-        </div>
-      </div>
+      {/* <Sidebar /> */}
+      <Routes>
+        <Route path="/" element={<LoginForm />}></Route>
+        <Route path="/search" element={<Searchbar />}></Route>
+        <Route path="/resume" element={<ResumeBuilder />}></Route>
+        <Route path="/salarysearch" element={<SalarySearchBar />}></Route>
+        <Route path="*" element={<ErrorPage />}></Route>
+      </Routes>
       <Footer />
     </main>
   );
