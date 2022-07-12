@@ -1,11 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { login, getUser } from "../api";
+import { login } from "../api";
 import { useAppContext } from "../hooks";
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const { user, setUser } = useAppContext();
   const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
@@ -14,22 +15,13 @@ export default function LoginForm() {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
+
   const onLogin = () => {
     login({ email: inputs.email, password: inputs.password })
       .then(res => {
         setUser(res.data);
-        navigate('/', { replace: true });
       });
   };
-
-
-  useEffect(() => {
-    getUser()
-      .then(res => {
-        setUser(res.data);
-      })
-      .catch(err => { console.log(err.response.data); });
-  }, []);
 
   return (
     <Fragment>
@@ -40,7 +32,7 @@ export default function LoginForm() {
               <div className="col-xl-10">
                 <div className="card rounded-3 text-black">
                   <div className="row g-0">
-                    <div className="col-lg-6">
+                    {/* <div className="col-lg-6">
                       <div className="card-body p-md-5 mx-md-4">
 
                         <div className="text-center">
@@ -53,6 +45,7 @@ export default function LoginForm() {
                           event.preventDefault();
                           onLogin();
                         }}>
+
                           
                           <section>
                             <p>Please login to your account</p>
@@ -64,7 +57,6 @@ export default function LoginForm() {
                                 id="email"
                                 className="form-control"
                                 placeholder="Email address"
-                                autoComplete="true"
                                 required />
                               <label className="form-label" htmlFor="form2Example11">Email</label>
                             </div>
@@ -75,7 +67,6 @@ export default function LoginForm() {
                                 type="password"
                                 id="password"
                                 className="form-control"
-                                autoComplete="true"
                                 required />
                               <label className="form-label" htmlFor="form2Example22">Password</label>
                             </div>
@@ -83,31 +74,28 @@ export default function LoginForm() {
                             <div className="text-center pt-1 mb-5 pb-1">
                               <button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log
                                 in</button>
-                              {/* <a className="text-muted" href="#!">Forgot password?</a> */}
+                              <a className="text-muted" href="#!">Forgot password?</a>
                             </div>
 
                             <div className="d-flex align-items-center justify-content-center pb-4">
                               <p className="mb-0 me-2">Don't have an account?</p>
-                              <button
-                                type="button"
-                                className="btn btn-outline-danger"
-                                onClick={() => navigate('/register', { replace: true })}
-                              >
-                                Create new
-                              </button>
+                              <button type="button" className="btn btn-outline-danger">Create new</button>
                             </div>
                           </section>
                         </form>
 
                       </div>
-                    </div>
-                    <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
-                      <div className="px-3 py-4 p-md-5 mx-md-4">
-                        <h4 className="mb-4">We are more than just a company</h4>
-                        <p className="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                      </div>
+                    </div> */}
+                    
+                    <div className="d-flex align-items-center justify-content-center pb-4">
+                      <p className="mb-0 me-2">Return to </p>
+                      <button
+                        type="button"
+                        className="btn btn-outline-success"
+                        onClick={() => navigate('/login', { replace: true })}
+                      >
+                        Login
+                      </button>
                     </div>
                   </div>
                 </div>

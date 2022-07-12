@@ -1,47 +1,67 @@
-import "./App.css";
-import Users from "./components/Users";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.bundle";
-import Sidebar from "./components/Sidebar";
+
+import { Fragment, useEffect, useState } from 'react';
+import { Route, Routes } from "react-router-dom";
+
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Searchbar from "./components/Searchbar";
+import SearchJob from "./components/SearchJob";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";
-import ErrorPage from "./components/ErrorPage";
-import AppContextProvider from './context';
+
+import RegisterForm from "./components/Register";
+import RequireAuth from "./components/RequireAuth";
+
+
+import { getUser } from "./api";
+import { useAppContext } from "./hooks";
 
 
 function App() {
+  const { setUser } = useAppContext();
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    getUser()
+      .then(res => setUser(res.data))
+      .catch(err => { console.log(err.response.data); })
+      .finally(() => setChecked(true))
+  }, []);
+
+
   return (
+    <Fragment>
+      {checked && (
+        <main>
+          <Header />
 
-    <AppContextProvider>
-      <main>
-        <Header />
-
-        <section className="sidebar">
           <Navbar />
-          <img className="sidebar--centered" />
-        </section>
-        <div className="sidebar-searchbar">
-          <Sidebar />
-          <section className="w-100 p-4 d-flex justify-content-center pb-4">
-          <LoginForm/>
-          </section>
-          {/* <div className="searchbar">
-            <Searchbar />
-          </div> */}
-          {/* <ResumeBuilder />
-          <div className="salary-searchbar">
-            <SalarySearchBar />
-          </div> */}
-        </div>
-        <Footer />
-      </main>
-    </AppContextProvider>
+
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <RequireAuth>
+                  <SearchJob />
+                </RequireAuth>
+              } />
+            <Route path="login" element={<LoginForm />} />
+            <Route path="register" element={<RegisterForm />} />
+            <Route
+              path="*"
+              element={
+                <RequireAuth>
+                  <SearchJob />
+                </RequireAuth>
+              } />
+          </Routes>
+          <Footer />
+        </main>
+      )}
+    </Fragment>
   );
 }
 

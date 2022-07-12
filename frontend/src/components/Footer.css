@@ -1,29 +1,11 @@
-.main-footer {
-  display: flex;
+.custom-footer {
   color: white;
   background-color: #4D774E;
-  margin-top: 5em;
-  padding-top: 3em;
-  padding-bottom: 3em;
-  width: 100%;
-  flex-direction: row;
-}
 
-.link-light {
-  text-decoration: none;
 }
 
 .link-light:hover {
-  color: #F1B24A
-}
-
-.row-copyright {
-  background-color: #4D774E;
-  color: white;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 1em;
-  font-size: small;
+  color: #F1B24A;
+  cursor: pointer;
 }
 
