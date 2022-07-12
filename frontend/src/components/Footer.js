@@ -3,7 +3,7 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <main>
+    <nav className="navbar navbar-default navbar-fixed-bottom">
       <div className="main-footer">
         <div className="container">
           <div className="col">
@@ -45,11 +45,11 @@ export default function Footer() {
                   Developers
                 </a>
               </li>
-                <li>
-                  <a href="#" className="link-light">
-                    Careers
-                  </a>
-                </li>
+              <li>
+                <a href="#" className="link-light">
+                  Careers
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -59,6 +59,6 @@ export default function Footer() {
         &copy;{new Date().getFullYear()} Job Search | All rights reserved |
         Terms Of Service | Privacy
       </div>
-    </main>
+    </nav>
   );
 }

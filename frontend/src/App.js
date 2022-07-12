@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Users from "./components/Users";
 import "bootstrap/dist/css/bootstrap.css";
@@ -10,13 +9,15 @@ import Header from "./components/Header";
 import Searchbar from "./components/Searchbar";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
+import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";
+import ErrorPage from "./components/ErrorPage";
 import AppContextProvider from './context';
 
 
 function App() {
-
   return (
+
     <AppContextProvider>
       <main>
         <Header />
