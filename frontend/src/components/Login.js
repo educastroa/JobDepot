@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { login, getUser } from "../api";
 import { useAppContext } from "../hooks";
 
 export default function LoginForm() {
   const { user, setUser } = useAppContext();
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
@@ -12,11 +14,11 @@ export default function LoginForm() {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
-
   const onLogin = () => {
     login({ email: inputs.email, password: inputs.password })
       .then(res => {
         setUser(res.data);
+        navigate('/', { replace: true });
       });
   };
 
@@ -29,11 +31,8 @@ export default function LoginForm() {
       .catch(err => { console.log(err.response.data); });
   }, []);
 
-
-
-
   return (
-    <main>
+    <Fragment>
       {user == null && (
         <section className="h-100 gradient-form" >
           <div className="container py-5 h-100">
@@ -54,7 +53,6 @@ export default function LoginForm() {
                           event.preventDefault();
                           onLogin();
                         }}>
-
                           
                           <section>
                             <p>Please login to your account</p>
@@ -66,6 +64,7 @@ export default function LoginForm() {
                                 id="email"
                                 className="form-control"
                                 placeholder="Email address"
+                                autoComplete="true"
                                 required />
                               <label className="form-label" htmlFor="form2Example11">Email</label>
                             </div>
@@ -76,6 +75,7 @@ export default function LoginForm() {
                                 type="password"
                                 id="password"
                                 className="form-control"
+                                autoComplete="true"
                                 required />
                               <label className="form-label" htmlFor="form2Example22">Password</label>
                             </div>
@@ -88,7 +88,13 @@ export default function LoginForm() {
 
                             <div className="d-flex align-items-center justify-content-center pb-4">
                               <p className="mb-0 me-2">Don't have an account?</p>
-                              <button type="button" className="btn btn-outline-danger">Create new</button>
+                              <button
+                                type="button"
+                                className="btn btn-outline-danger"
+                                onClick={() => navigate('/register', { replace: true })}
+                              >
+                                Create new
+                              </button>
                             </div>
                           </section>
                         </form>
@@ -110,6 +116,6 @@ export default function LoginForm() {
           </div>
         </section>
       )}
-    </main>
+    </Fragment>
   )
 }

@@ -45,7 +45,7 @@ export default function Navbar() {
           {user != null && (
             <Fragment>
               Logged in as {user.name}
-              <button className="btn btn-outline-success" onClick={() => onLogout()} type="button">Logout</button>
+              <button className="btn btn-outline-success ms-2" onClick={() => onLogout()} type="button">Logout</button>
             </Fragment>
           )}
         </div>
