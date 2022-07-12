@@ -1,8 +1,17 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { login, getUser, sessionLogout } from "../api";
+import React, { Fragment } from "react";
+import { sessionLogout } from "../api";
+import { useAppContext } from "../hooks";
 
 export default function Navbar() {
+
+  const { user, setUser } = useAppContext();
+
+  const onLogout = () => {
+    setUser();
+    sessionLogout();
+  };
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-fixed-top">
       <div className="container-fluid">
@@ -78,6 +87,14 @@ export default function Navbar() {
               </ul>
             </li>
           </ul>
+        </div>
+        <div className="d-flex align-items-center justify-content-end">
+          {user != null && (
+            <Fragment>
+              Logged in as {user.name}
+              <button className="btn btn-outline-success" onClick={() => onLogout()} type="button">Logout</button>
+            </Fragment>
+          )}
         </div>
       </div>
     </nav>

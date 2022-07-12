@@ -12,25 +12,36 @@ import SalarySearchBar from "./components/SalarySearchBar";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";
 import ErrorPage from "./components/ErrorPage";
+import AppContextProvider from './context';
+
 
 function App() {
   return (
-    <main>
-      <Navbar />
-      <Header />
-      <section className="sidebar">
-        <img className="sidebar--centered" />
-      </section>
-      {/* <Sidebar /> */}
-      <Routes>
-        <Route path="/" element={<LoginForm />}></Route>
-        <Route path="/search" element={<Searchbar />}></Route>
-        <Route path="/resume" element={<ResumeBuilder />}></Route>
-        <Route path="/salarysearch" element={<SalarySearchBar />}></Route>
-        <Route path="*" element={<ErrorPage />}></Route>
-      </Routes>
-      <Footer />
-    </main>
+
+    <AppContextProvider>
+      <main>
+        <Header />
+
+        <section className="sidebar">
+          <Navbar />
+          <img className="sidebar--centered" />
+        </section>
+        <div className="sidebar-searchbar">
+          <Sidebar />
+          <section className="w-100 p-4 d-flex justify-content-center pb-4">
+          <LoginForm/>
+          </section>
+          {/* <div className="searchbar">
+            <Searchbar />
+          </div> */}
+          {/* <ResumeBuilder />
+          <div className="salary-searchbar">
+            <SalarySearchBar />
+          </div> */}
+        </div>
+        <Footer />
+      </main>
+    </AppContextProvider>
   );
 }
 
