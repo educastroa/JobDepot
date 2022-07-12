@@ -10,10 +10,4 @@
 
 .salary-search-bar:hover {
   box-shadow: 5px 5px 5px 5px lightblue;
-
-}
-
-.btn {
-  display: flex;
-  margin-left: 10px;
 }
