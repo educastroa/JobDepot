@@ -1,5 +1,4 @@
 import React from "react";
-import "./SalarySearchBar.css";
 
 export default function ViewResume() {
   return (

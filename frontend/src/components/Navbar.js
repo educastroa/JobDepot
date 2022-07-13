@@ -54,7 +54,7 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/salarysearch">
+                  <a className="dropdown-item" href="/salary">
                     Salaries
                   </a>
                 </li>
