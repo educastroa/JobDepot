@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 import { jobParams, jobSearch } from "../api";
 import { useAppContext } from '../hooks';
-import JobCard from "./JobCard";
+import JobsList from "./JobsList";
 
 export default function SearchJob() {
   const { jobs, setJobs } = useAppContext();
@@ -11,6 +11,7 @@ export default function SearchJob() {
   const remoteCheckboxRef = useRef();
   const employmentTypesSelectRef = useRef();
   const radiusSelectRef = useRef();
+  const [page, setPage] = useState(1);
   const [search, setSearch] = useState({
       employmentTypes: '',
       query: '',
@@ -18,16 +19,28 @@ export default function SearchJob() {
       remoteJobsOnly: false,
   });
 
-  const handleSubmit = (event) => {
-    const numPage = 5;
-    const page = 1;
-    event.preventDefault();
+  const handleFetch = (e, isNewSearch) => {
+    e != null && e.preventDefault();
 
-    jobSearch({ ...search, numPage, page })
+    let currentPage = page + 1;
+
+    if (isNewSearch) {
+      currentPage = 1;
+      setJobs([]);
+    }
+
+    jobSearch({ ...search, page: currentPage })
       .then(res => {
-        console.log(res);
-        setJobs(res?.data ?? []);
-        new bootstrap.Collapse(collapsibleRef.current);
+        const resData = res?.data ?? [];
+        let currentData = resData;
+
+        if (!isNewSearch) {
+          currentData = [...jobs, ...resData];
+          setPage(currentPage);
+        }
+
+        setJobs(currentData);
+        new bootstrap.Collapse(collapsibleRef.current, { toggle: false });
       })
   }
 
@@ -49,6 +62,8 @@ export default function SearchJob() {
       radius: '0',
       remoteJobsOnly: false,
     });
+
+    setJobs([]);
   }
 
   return (
@@ -56,7 +71,7 @@ export default function SearchJob() {
       <div className="d-flex flex-column h-100">
         <div className="mx-auto w-25">
           <h2 className="text-center py-4">Find Your Next Career Here </h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={e => handleFetch(e, true)}>
             <div className="mb-3">
               <label htmlFor="job-search-query" className="visually-hidden">
                 Search job posts
@@ -144,8 +159,10 @@ export default function SearchJob() {
           </form>
         </div>
 
-        <div className="mx-auto w-100 mt-5 mb-2 overflow-auto" style={{ flex: 1, maxWidth: '1200px' }}>
-          {jobs.length > 0 && <JobCard />}
+        <div id="scrollableDiv" className="mx-auto w-100 mt-5 mb-2 overflow-auto" style={{ flex: 1, maxWidth: '1200px' }}>
+          {jobs.length > 0 && (
+            <JobsList onFetchData={() => handleFetch(null, false)}/>
+          )}
         </div>
       </div>
     </div>

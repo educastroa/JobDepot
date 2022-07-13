@@ -13,6 +13,7 @@ export const jobSearch = ({
     query,
     radius,
     remoteJobsOnly = false,
+    date_posted = "month",
 }) => {
     const baseUrl = 'https://google-jobs-search.p.rapidapi.com/search';
     const currentEmploymentTypes = ['', 'ALL'].includes(employmentTypes) ? false : employmentTypes;
@@ -25,6 +26,7 @@ export const jobSearch = ({
             query,
             ...(currentRadius && { radius: currentRadius }),
             remote_jobs_only: remoteJobsOnly,
+            date_posted,
         },
         headers: {
             'Content-Type': 'application/json',
