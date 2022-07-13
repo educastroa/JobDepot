@@ -1,18 +1,20 @@
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SearchJob from "./components/SearchJob";
 import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
-import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";
+import ViewResume from "./components/ViewResume";
+
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
+
 import { getUser } from "./api";
 import { useAppContext } from "./hooks";
-
 
 function App() {
   const { setUser } = useAppContext();
@@ -20,11 +22,12 @@ function App() {
 
   useEffect(() => {
     getUser()
-      .then(res => setUser(res.data))
-      .catch(err => { console.log(err.response.data); })
-      .finally(() => setChecked(true))
+      .then((res) => setUser(res.data))
+      .catch((err) => {
+        console.log(err.response.data);
+      })
+      .finally(() => setChecked(true));
   }, []);
-
 
   return (
     <Fragment>
@@ -33,25 +36,37 @@ function App() {
           <Header />
           <Navbar />
 
-          <main className="overflow-hidden" style={{ flex: 1 }}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <RequireAuth>
-                    <SearchJob />
-                  </RequireAuth>
-                } />
-              <Route path="login" element={<LoginForm />} />
-              <Route path="register" element={<RegisterForm />} />
-              <Route
-                path="*"
-                element={
-                  <RequireAuth>
-                    <SearchJob />
-                  </RequireAuth>
-                } />
-            </Routes>
+  <main className="overflow-hidden" style={{ flex: 1 }}>
+          <Routes>
+            <Route path="login" element={<LoginForm />} />
+            <Route path="register" element={<RegisterForm />} />
+            <Route
+              path="/search"
+              element={
+                <RequireAuth>
+                  <SearchJob />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path=""
+              element={
+                <RequireAuth>
+                  <SearchJob />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/resume"
+              element={
+                <RequireAuth>
+                  <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
+                    <ResumeBuilder />
+                  </div>
+                </RequireAuth>
+              }
+            />
+          </Routes>
           </main>
 
           <Footer />

@@ -1,28 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./ResumeBuilder.css";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../hooks";
 
-export default function ResumeBuilder() {
-  // const [title, setTitle] = useState("");
-  // const [body, setBody] = useState("");
-  // const [author, setAuthor] = useState("Burlington");
+export default function ResumeBuilder(props) {
+  const navigate = useNavigate();
+
+  const { user, setUser } = useAppContext();
+
+  const [full_name, setFullName] = useState("");
+  const [contact_information, setContactInfo] = useState("");
+  const [skills, setSkills] = useState("");
+  const [work_experience, setWorkExperience] = useState("");
+  const [education, setEducation] = useState("");
+
+  const handleFullName = (e) => {
+    setFullName(e.target.value);
+  };
+
+  const handleContactInformation = (e) => {
+    setContactInfo(e.target.value);
+  };
+
+  const handleSkills = (e) => {
+    setSkills(e.target.value);
+  };
+
+  const handleWorkExperience = (e) => {
+    setWorkExperience(e.target.value);
+  };
+
+  const handleEducation = (e) => {
+    setEducation(e.target.value);
+  };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    axios
+      .post("/api/users/resume", {
+        full_name: full_name,
+        contact_information: contact_information,
+        skills: skills,
+        work_experience: work_experience,
+        education: education,
+        user: user.id,
+      })
+      .then((res) => {});
+    navigate("/search");
+  };
+
+  const resetForm = () => {
+    setFullName("");
+    setContactInfo("");
+    setSkills("");
+    setWorkExperience("");
+    setEducation("");
+  };
 
   return (
     <form>
-      <ul class="flex-outer">
+      <ul className="flex-outer">
         <li>
           <label for="full-name">Full Name</label>
           <input
             type="text"
             id="full-name"
             placeholder="Enter your name here"
+            className="full-name-input"
+            value={full_name}
+            onChange={handleFullName}
           ></input>
         </li>
         <li>
-          <label for="contact-info">Contact infomation</label>
+          <label for="contact-info">Contact Infomation</label>
           <input
             type="text"
             id="contact-info"
             placeholder="Contact information here"
+            className="contact-info-input"
+            value={contact_information}
+            onChange={handleContactInformation}
           ></input>
         </li>
         <li>
@@ -31,6 +89,9 @@ export default function ResumeBuilder() {
             type="skills"
             id="skills"
             placeholder="Enter your skills here"
+            className="skills-input"
+            value={skills}
+            onChange={handleSkills}
           ></input>
         </li>
         <li>
@@ -39,6 +100,9 @@ export default function ResumeBuilder() {
             type="work-experience"
             id="work-experience"
             placeholder="Enter your previous work experience here"
+            className="work-experience-input"
+            value={work_experience}
+            onChange={handleWorkExperience}
           ></input>
         </li>
         <li>
@@ -47,10 +111,19 @@ export default function ResumeBuilder() {
             rows="6"
             id="education"
             placeholder="Enter your education here"
+            className="education-input"
+            value={education}
+            type="text"
+            onChange={handleEducation}
           ></textarea>
         </li>
         <li>
-          <button type="upload">Upload Resume</button>
+          <button className="resume-submit" onClick={handleUpload}>
+            Upload
+          </button>
+          <button className="resume-clear" onClick={resetForm}>
+            Clear
+          </button>
         </li>
       </ul>
     </form>

@@ -24,19 +24,17 @@ db.connect()
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cookieSession({
     name: "session",
-    keys: ['key1', 'key2'],
+    keys: ["key1", "key2"],
 
     // Cookie Options
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
   })
 );
-
 
 app.use(
   "/styles",
@@ -63,7 +61,6 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

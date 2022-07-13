@@ -3,14 +3,12 @@ import { sessionLogout } from "../api";
 import { useAppContext } from "../hooks";
 
 export default function Navbar() {
-
   const { user, setUser } = useAppContext();
 
   const onLogout = () => {
     setUser();
     sessionLogout();
   };
-
 
   return (
     <nav className="navbar navbar-expand-lg navbar-fixed-top">
@@ -91,8 +89,14 @@ export default function Navbar() {
         <div className="d-flex align-items-center justify-content-end">
           {user != null && (
             <Fragment>
-              Logged in as {user.name}
-              <button className="btn btn-outline-success ms-2" onClick={() => onLogout()} type="button">Logout</button>
+              Logged in as {user.first_name}
+              <button
+                className="btn btn-outline-success ms-2"
+                onClick={() => onLogout()}
+                type="button"
+              >
+                Logout
+              </button>
             </Fragment>
           )}
         </div>
