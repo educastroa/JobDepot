@@ -8,7 +8,7 @@ export const sessionLogout = () => axios.post('/api/users/logout');
 
 export const jobSearch = ({
     employmentTypes,
-    numPage = 1,
+    numPages = 2,
     page = 1,
     query,
     radius,
@@ -20,21 +20,22 @@ export const jobSearch = ({
     const options = {
         params: {
             ...(currentEmploymentTypes && { employment_types: currentEmploymentTypes }),
-            num_page: numPage,
+            num_pages: numPages,
             page,
             query,
             ...(currentRadius && { radius: currentRadius }),
             remote_jobs_only: remoteJobsOnly,
         },
         headers: {
+            'Content-Type': 'application/json',
             'X-RapidAPI-Key': '9b4878deadmshab8f24e28e4474cp1d3286jsn25bd1555dd6d',
             'X-RapidAPI-Host': 'google-jobs-search.p.rapidapi.com'
         }
     };
 
     return axios.get(baseUrl, options)
-        .then(response => {
-            console.log(response.data);
+        .then(res => {
+            return res.data
         })
         .catch(error => {
             console.error(error);

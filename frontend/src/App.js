@@ -29,31 +29,33 @@ function App() {
   return (
     <Fragment>
       {checked && (
-        <main>
+        <div className="d-flex flex-column vh-100">
           <Header />
-
           <Navbar />
 
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <RequireAuth>
-                  <SearchJob />
-                </RequireAuth>
-              } />
-            <Route path="login" element={<LoginForm />} />
-            <Route path="register" element={<RegisterForm />} />
-            <Route
-              path="*"
-              element={
-                <RequireAuth>
-                  <SearchJob />
-                </RequireAuth>
-              } />
-          </Routes>
+          <main className="overflow-hidden" style={{ flex: 1 }}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
+                  </RequireAuth>
+                } />
+              <Route path="login" element={<LoginForm />} />
+              <Route path="register" element={<RegisterForm />} />
+              <Route
+                path="*"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
+                  </RequireAuth>
+                } />
+            </Routes>
+          </main>
+
           <Footer />
-        </main>
+        </div>
       )}
     </Fragment>
   );
