@@ -1,8 +1,5 @@
 
 import { Fragment, useEffect, useState } from 'react';
-import { Route, Routes } from "react-router-dom";
-
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -11,11 +8,8 @@ import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearchBar from "./components/SalarySearchBar";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";
-
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
-
-
 import { getUser } from "./api";
 import { useAppContext } from "./hooks";
 
@@ -35,31 +29,33 @@ function App() {
   return (
     <Fragment>
       {checked && (
-        <main>
+        <div className="d-flex flex-column vh-100">
           <Header />
-
           <Navbar />
 
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <RequireAuth>
-                  <SearchJob />
-                </RequireAuth>
-              } />
-            <Route path="login" element={<LoginForm />} />
-            <Route path="register" element={<RegisterForm />} />
-            <Route
-              path="*"
-              element={
-                <RequireAuth>
-                  <SearchJob />
-                </RequireAuth>
-              } />
-          </Routes>
+          <main className="overflow-hidden" style={{ flex: 1 }}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
+                  </RequireAuth>
+                } />
+              <Route path="login" element={<LoginForm />} />
+              <Route path="register" element={<RegisterForm />} />
+              <Route
+                path="*"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
+                  </RequireAuth>
+                } />
+            </Routes>
+          </main>
+
           <Footer />
-        </main>
+        </div>
       )}
     </Fragment>
   );
