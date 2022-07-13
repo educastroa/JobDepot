@@ -7,5 +7,5 @@ CREATE TABLE resume (
   skills VARCHAR(255) NOT NULL,
   work_experience VARCHAR(255) NOT NULL,
   education VARCHAR(255) NOT NULL,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id INTEGER REFERENCES users(id)
 )
