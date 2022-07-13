@@ -3,8 +3,7 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-
-    <footer className="custom-footer fixed-bottom">
+    <footer className="custom-footer">
       <div className="container my-4">
         <div className="row align-items-start">
           <div className="col text-center">

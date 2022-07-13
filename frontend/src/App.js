@@ -1,6 +1,6 @@
+
 import { Fragment, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -32,11 +32,11 @@ function App() {
   return (
     <Fragment>
       {checked && (
-        <main>
+        <div className="d-flex flex-column vh-100">
           <Header />
-
           <Navbar />
 
+  <main className="overflow-hidden" style={{ flex: 1 }}>
           <Routes>
             <Route path="login" element={<LoginForm />} />
             <Route path="register" element={<RegisterForm />} />
@@ -67,8 +67,10 @@ function App() {
               }
             />
           </Routes>
+          </main>
+
           <Footer />
-        </main>
+        </div>
       )}
     </Fragment>
   );
