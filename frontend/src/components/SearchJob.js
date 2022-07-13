@@ -82,22 +82,17 @@ export default function SearchJob() {
                   id="job-search-query"
                   name="query"
                   ref={queryInputRef}
-                  className="form-control me-4" 
+                  className="form-control me-4"
                   placeholder="Search job posts"
                   value={search.query}
                   onChange={handleChange}
                   required
                 />
-                <button 
-                  type="button"
-                  className="btn btn-primary text-nowrap"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#advanced-search"
-                  aria-expanded="false"
-                  aria-controls="advanced-search"
-                  >
-                    Advanced Search
-                </button>
+                 <button type="submit" className="btn btn-success">Search</button>
+
+
+
+
               </div>
             </div>
 
@@ -154,7 +149,17 @@ export default function SearchJob() {
 
             <div className="d-flex justify-content-between w-100">
               <button type="button" className="btn btn-danger" onClick={handleClear}>Clear</button>
-              <button type="submit" className="btn btn-success">Search</button>
+
+              <button
+                  type="button"
+                  className="btn btn-outline-primary text-nowrap"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#advanced-search"
+                  aria-expanded="false"
+                  aria-controls="advanced-search"
+                  >
+                    Advanced Search
+                </button>
             </div>
           </form>
         </div>

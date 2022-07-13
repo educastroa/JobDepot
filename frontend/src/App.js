@@ -33,13 +33,20 @@ function App() {
           <Header />
           <Navbar />
 
-          <main className="overflow-hidden" style={{ flex: 1 }}>
+          <main className="overflow-auto" style={{ flex: 1 }}>
             <Routes>
               <Route
                 path="/"
                 element={
                   <RequireAuth>
                     <SearchJob />
+                  </RequireAuth>
+                } />
+              <Route
+                path="resume"
+                element={
+                  <RequireAuth>
+                    <ResumeBuilder/>
                   </RequireAuth>
                 } />
               <Route path="login" element={<LoginForm />} />
