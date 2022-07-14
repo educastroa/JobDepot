@@ -88,11 +88,7 @@ export default function SearchJob() {
                   onChange={handleChange}
                   required
                 />
-                 <button type="submit" className="btn btn-success">Search</button>
-
-
-
-
+                <button type="submit" className="btn btn-success">Search</button>
               </div>
             </div>
 
@@ -149,10 +145,9 @@ export default function SearchJob() {
 
             <div className="d-flex justify-content-between w-100">
               <button type="button" className="btn btn-danger" onClick={handleClear}>Clear</button>
-
               <button
                   type="button"
-                  className="btn btn-outline-primary text-nowrap"
+                  className="btn btn-primary text-nowrap"
                   data-bs-toggle="collapse"
                   data-bs-target="#advanced-search"
                   aria-expanded="false"
