@@ -1,4 +1,3 @@
-
 import { Fragment, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -36,37 +35,47 @@ function App() {
           <Header />
           <Navbar />
 
-  <main className="overflow-hidden" style={{ flex: 1 }}>
-          <Routes>
-            <Route path="login" element={<LoginForm />} />
-            <Route path="register" element={<RegisterForm />} />
-            <Route
-              path="/search"
-              element={
-                <RequireAuth>
-                  <SearchJob />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path=""
-              element={
-                <RequireAuth>
-                  <SearchJob />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/resume"
-              element={
-                <RequireAuth>
-                  <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
-                    <ResumeBuilder />
-                  </div>
-                </RequireAuth>
-              }
-            />
-          </Routes>
+          <main className="overflow-auto" style={{ flex: 1 }}>
+            <Routes>
+              <Route path="login" element={<LoginForm />} />
+              <Route path="register" element={<RegisterForm />} />
+              <Route
+                path="/search"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=""
+                element={
+                  <RequireAuth>
+                    <SearchJob />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/resume"
+                element={
+                  <RequireAuth>
+                    <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
+                      <ResumeBuilder />
+                    </div>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/resume/view"
+                element={
+                  <RequireAuth>
+                    <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
+                      <ViewResume />
+                    </div>
+                  </RequireAuth>
+                }
+              />
+            </Routes>
           </main>
 
           <Footer />
