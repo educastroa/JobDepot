@@ -24,11 +24,12 @@ export default function SalarySearch() {
 
   const handleClear = () => {
     setSalaryResults([]);
-  }
+  };
 
   useEffect(() => {
     console.log(salaryResults);
   }, [salaryResults]);
+
 
 
   return (
@@ -71,42 +72,43 @@ export default function SalarySearch() {
             </div>
           </form>
         </div>
-        <div>
+        <div >
           {salaryResults.length > 0 ? (salaryResults.map((salaryResult, i) =>
-            <div key={i} className="mx-auto w-100 mt-5 mb-2 overflow-auto" style={{ flex: 1, maxWidth: '1200px' }}>
-              <div className="card">
-                <div className="card-body d-flex justify-content-between align-items-center">
-                  <div className="d-flex align-items-center overflow-hidden">
-                    <div className="me-4">
-
+            <div key={i} className="mx-auto mt-4" style={{ maxWidth: '800px' }}>
+              <div className=" d-flex card">
+                <div className="d-flex flex-row justify-content-between align-items-center card-body">
+                  <div className="d-flex flex-column align-items-center">
+                    <div className="w-100">
+                      <b>Job Title: </b>
+                      {salaryResult.job_title}
                     </div>
-
-                    <div className="d-flex flex-wrap align-items-center overflow-hidden me-4">
-                      <div className="w-100">
-                        <b>Job Title: </b>
-                        {salaryResult.job_title}
-                      </div>
-                      <div className="w-100">
-                        <b>Median Salary: </b>
-                        {salaryResult.median_salary}
-                      </div>
-                      <div className="w-100">
-                        <b>Currency: </b>
-                        {salaryResult.salary_currency}
-                      </div>
-                      <div className="w-100">
-                        <b>Publisher name: </b>
-                        {salaryResult.publisher_name}
-                      </div>
+                    <div className="w-100">
+                      <b>Publisher name: </b>
+                      {salaryResult.publisher_name}
+                    </div>
+                    <div className="w-100">
+                      <b>More information: </b>
+                      <a href={salaryResult.publisher_link} target="_blank"><b>Click here</b></a>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="collapse" >
-                <div className="card card-body">
-                  <b>Job description:</b>
-
-                  {/* {job.job_description} */}
+                  <div className="d-flex flex-column align-items-start" >
+                    <div className="w-100">
+                      <b>Highest Salary: </b>
+                      {Math.floor(salaryResult.max_salary)}
+                    </div>
+                    <div className="w-100">
+                      <b>Median Salary: </b>
+                      {Math.floor(salaryResult.median_salary)}
+                    </div>
+                    <div className="w-100">
+                      <b>Lowest Salary: </b>
+                      {Math.floor(salaryResult.min_salary)}
+                    </div>
+                    <div className="w-100">
+                      <b>Currency: </b>
+                      {salaryResult.salary_currency}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>)

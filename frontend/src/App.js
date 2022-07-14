@@ -36,7 +36,7 @@ function App() {
           <Header />
           <Navbar />
 
-          <main className="overflow-hidden" style={{ flex: 1 }}>
+          <main className="overflow-auto" style={{ flex: 1 }}>
             <Routes>
               <Route path="login" element={<LoginForm />} />
               <Route path="register" element={<RegisterForm />} />
@@ -70,7 +70,7 @@ function App() {
                 path="/salary"
                 element={
                   <RequireAuth>
-                    <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
+                    <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
                     </div>
                   </RequireAuth>
