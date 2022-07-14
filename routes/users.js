@@ -113,11 +113,15 @@ module.exports = (db) => {
     db.query(
       `
       SELECT *
-      FROM resume;
+      FROM resume
+      ORDER BY id DESC
+      LIMIT 1;
+
     `
     )
-      .then((res) => {
-        console.log("result rows here: ", res.rows[0]);
+      .then((data) => {
+        console.log("result rows here1: ", data.rows);
+        res.send(data.rows);
       })
       .catch((err) => console.log("error: ", err));
   });

@@ -47,7 +47,7 @@ export default function ResumeBuilder(props) {
         user: user.id,
       })
       .then((res) => {});
-    navigate("/search");
+    navigate("/resume/view");
   };
 
   const resetForm = () => {
