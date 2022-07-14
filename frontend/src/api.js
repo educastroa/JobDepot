@@ -45,3 +45,31 @@ export const jobSearch = ({
 }
 
 
+
+export const salarySearch = ({
+  job_title,
+  location,
+}) => {
+    const baseUrl = 'https://google-jobs-search.p.rapidapi.com/typical-salary';
+    const options = {
+        params: {
+          job_title,
+          location,
+        },
+        headers: {
+            'Content-Type': 'application/json',
+            'X-RapidAPI-Key': '9b4878deadmshab8f24e28e4474cp1d3286jsn25bd1555dd6d',
+            'X-RapidAPI-Host': 'google-jobs-search.p.rapidapi.com'
+        }
+    };
+
+    return axios.get(baseUrl, options)
+        .then(res => {
+            return res.data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+

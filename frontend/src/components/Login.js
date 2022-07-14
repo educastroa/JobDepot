@@ -15,7 +15,8 @@ export default function LoginForm() {
   };
 
   const onLogin = () => {
-    login({ email: inputs.email, password: inputs.password }).then((res) => {
+    login({ email: inputs.email, password: inputs.password })
+    .then((res) => {
       setUser(res.data);
       navigate("/", { replace: true });
     });

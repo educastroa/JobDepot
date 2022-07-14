@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SearchJob from "./components/SearchJob";
 import ResumeBuilder from "./components/ResumeBuilder";
-import SalarySearchBar from "./components/SalarySearchBar";
+import SalarySearch from "./components/SalarySearch";
 import LoginForm from "./components/Login";
 import ViewResume from "./components/ViewResume";
 
@@ -71,6 +71,13 @@ function App() {
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ViewResume />
+ <Route
+                path="/salary"
+                element={
+                  <RequireAuth>
+                    <div className="scrollbar scrollbar-primary mx-auto">
+                      <SalarySearch />
+
                     </div>
                   </RequireAuth>
                 }
