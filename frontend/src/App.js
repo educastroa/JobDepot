@@ -1,4 +1,3 @@
-
 import { Fragment, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -67,11 +66,18 @@ function App() {
                 }
               />
               <Route
+                path="/resume/view"
+                element={
+                  <RequireAuth>
+                    <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
+                      <ViewResume />
+ <Route
                 path="/salary"
                 element={
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
+
                     </div>
                   </RequireAuth>
                 }
