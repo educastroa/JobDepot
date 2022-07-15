@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./ViewResume.css";
 
-
 export default function ViewResume() {
   const [resume, setResume] = useState([]);
 
