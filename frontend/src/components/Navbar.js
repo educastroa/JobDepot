@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import { sessionLogout } from "../api";
 import { useAppContext } from "../hooks";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { user, setUser } = useAppContext();
+  const navigate = useNavigate();
 
   const onLogout = () => {
     setUser();
@@ -80,6 +82,25 @@ export default function Navbar() {
                 <li>
                   <a className="dropdown-item" href="/resume">
                     Upload
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Messages
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a className="dropdown-item" onClick={() => navigate("/messages", { replace: true }) }>
+                    View
                   </a>
                 </li>
               </ul>
