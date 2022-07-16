@@ -23,6 +23,7 @@ export default function RegisterForm() {
         first_name: inputs.first_name,
         last_name: inputs.last_name,
         email: inputs.email,
+        password: inputs.password,
       })
       .then((res) => {})
       .catch((err) => console.log("ERROR MEEP", err));

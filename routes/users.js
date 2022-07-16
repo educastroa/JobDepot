@@ -82,15 +82,18 @@ module.exports = (db) => {
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const email = req.body.email;
+    const password = req.body.password;
+    const hashedPassword = bcrypt.hashSync(password, 10);
 
-    console.log("MEEP req body", req);
+    console.log("MEEP req body", first_name);
+
     db.query(
       `
           INSERT INTO users
-          (first_name, last_name, email)
-          VALUES ($1, $2, $3);
+          (first_name, last_name, email, password)
+          VALUES ($1, $2, $3, $4);
         `,
-      [first_name, last_name, email]
+      [first_name, last_name, email, hashedPassword]
     )
       .then((res) => {
         res.send(200);
