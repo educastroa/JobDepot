@@ -78,6 +78,29 @@ module.exports = (db) => {
     res.send({ message: "Logged out!" });
   });
 
+  router.post("/register", (req, res) => {
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
+    console.log("MEEP req body", first_name);
+
+    db.query(
+      `
+          INSERT INTO users
+          (first_name, last_name, email, password)
+          VALUES ($1, $2, $3, $4);
+        `,
+      [first_name, last_name, email, hashedPassword]
+    )
+      .then((res) => {
+        res.send(200);
+      })
+      .catch((err) => console.log("error", err));
+  });
+
   router.post("/resume", (req, res) => {
     const full_name = req.body.full_name;
     const contact_information = req.body.contact_information;
@@ -124,35 +147,6 @@ module.exports = (db) => {
         res.send(data.rows);
       })
       .catch((err) => console.log("error: ", err));
-  });
-
-  router.post("/resume", (req, res) => {
-    const full_name = req.body.full_name;
-    const contact_information = req.body.contact_information;
-    const skills = req.body.skills;
-    const work_experience = req.body.work_experience;
-    const education = req.body.education;
-    const user_id = req.body.user;
-
-    db.query(
-      `
-          INSERT INTO resume
-          (full_name, contact_information, skills, work_experience, education, user_id)
-          VALUES ($1, $2, $3, $4, $5, $6);
-        `,
-      [
-        full_name,
-        contact_information,
-        skills,
-        work_experience,
-        education,
-        user_id,
-      ]
-    )
-      .then((res) => {
-        res.send(200);
-      })
-      .catch((err) => console.log("error", err));
   });
 
   return router;

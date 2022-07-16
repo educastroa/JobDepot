@@ -71,13 +71,16 @@ function App() {
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ViewResume />
- <Route
+                    </div>
+                  </RequireAuth>
+                }
+              />
+              <Route
                 path="/salary"
                 element={
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
-
                     </div>
                   </RequireAuth>
                 }
