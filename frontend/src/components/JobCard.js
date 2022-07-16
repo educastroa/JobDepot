@@ -8,7 +8,6 @@ export default function JobCard({ job, id }) {
   const [src, setSrc] = useState();
   const { user, setUser } = useAppContext();
   const [savedjob, setSavedJob] = useState(false);
-  const [useid, setUseId] = useState(false);
 
   const handleError = () => {
     setSrc(noImage);
@@ -32,6 +31,16 @@ export default function JobCard({ job, id }) {
       })
       .then((res) => {});
     setSavedJob(true);
+  };
+
+  const removeSavedJob = (e) => {
+    e.preventDefault();
+    console.log("xxxxxxxxxxxxxxxxxxxx", id);
+
+    axios.post("/api/users/saved/delete/" + id).then(() => {
+      console.log("is it hitting this");
+    });
+    setSavedJob(false);
   };
 
   return (
@@ -87,7 +96,7 @@ export default function JobCard({ job, id }) {
               data-toggle={savedjob}
               aria-pressed="false"
               autocomplete="off"
-              onClick={addSavedJob}
+              onClick={savedjob ? removeSavedJob : addSavedJob}
             >
               {savedjob ? "Job Saved" : "Like"}
             </button>
