@@ -39,7 +39,7 @@ export default function ResumeBuilder(props) {
     e.preventDefault();
     console.log("MOOP", full_name);
     axios
-      .post("/api/users/resume", {
+      .post("/api/resume", {
         full_name: full_name,
         contact_information: contact_information,
         skills: skills,

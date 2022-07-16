@@ -7,9 +7,9 @@ export default function ViewResume() {
 
   const getResume = () => {
     axios
-      // /api/users/view
+      // /api/resume/view
       //https://jsonplaceholder.typicode.com/resume
-      .get("/api/users/view")
+      .get("/api/resume/view")
       .then((res) => {
         console.log("res data:", res.data);
         setResume(res.data);
