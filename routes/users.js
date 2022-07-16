@@ -156,7 +156,7 @@ module.exports = (db) => {
   });
 
   router.post("/saved", (req, res) => {
-    console.log("bloop", res);
+    console.log("blooper res", res);
     const employer_name = req.body.employer_name;
     const job_title = req.body.job_title;
     const job_posted_at_datetime_utc = req.body.job_posted_at_datetime_utc;
@@ -164,7 +164,7 @@ module.exports = (db) => {
     const job_description = req.body.job_description;
     const user_id = req.body.user;
 
-    console.log("bleep:", req.body);
+    console.log("blooper req:", req.body);
 
     db.query(
       `
