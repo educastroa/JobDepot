@@ -1,30 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
 module.exports = (db) => {
-  //api/resume
-  router.get("/view", (req, res) => {
-    db.query(
-      `
-      SELECT *
-      FROM resume;
-    `
-    )
-      .then((res) => {
-        console.log("res rows here: ", res.rows);
-        // res.send(res.rows);
-      })
-      .catch((err) => console.log("error: ", err));
-    res.send(error);
-  });
-
-  router.post("/resume", (req, res) => {
+  router.post("/", (req, res) => {
     const full_name = req.body.full_name;
     const contact_information = req.body.contact_information;
     const skills = req.body.skills;
     const work_experience = req.body.work_experience;
     const education = req.body.education;
     const user_id = req.body.user;
+
+    console.log("req.body here:", req.body);
 
     db.query(
       `
@@ -45,6 +32,23 @@ module.exports = (db) => {
         res.send(200);
       })
       .catch((err) => console.log("error", err));
+  });
+
+  router.get("/view", (req, res) => {
+    db.query(
+      `
+      SELECT *
+      FROM resume
+      ORDER BY id DESC
+      LIMIT 1;
+
+    `
+    )
+      .then((data) => {
+        console.log("result rows here1: ", data.rows);
+        res.send(data.rows);
+      })
+      .catch((err) => console.log("error: ", err));
   });
 
   return router;

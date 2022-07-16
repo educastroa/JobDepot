@@ -21,7 +21,7 @@ export default function JobCard({ job, id }) {
     e.preventDefault();
     console.log("UNIQUE RUPE", job.job_id);
     axios
-      .post("/api/users/saved", {
+      .post("/api/jobs/saved", {
         employer_name: job.employer_name,
         job_title: job.job_title,
         job_posted_at_datetime_utc: job.job_posted_at_datetime_utc,
@@ -42,7 +42,7 @@ export default function JobCard({ job, id }) {
 
     console.log("ploop", job.job_id);
 
-    axios.post("/api/users/delete/" + job.job_id).then(() => {
+    axios.post("/api/jobs/delete/" + job.job_id).then(() => {
       console.log("is it hitting this moo");
     });
     setSavedJob(false);

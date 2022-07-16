@@ -11,9 +11,9 @@ export default function ViewResume({ onFetchData }) {
 
   const getSavedJobs = () => {
     axios
-      // /api/users/view
+      // /api/jobs/view
       //https://jsonplaceholder.typicode.com/resume
-      .get("/api/users/saved")
+      .get("/api/jobs/saved")
       .then((res) => {
         console.log("res data:", res.data);
         setSavedJobs(res.data);
@@ -31,7 +31,7 @@ export default function ViewResume({ onFetchData }) {
     // e.preventDefault();
     console.log("xxxxxxxxxxxxxxxxxxxx", jobid);
 
-    axios.post("/api/users/saved/delete/" + jobid).then(() => {
+    axios.post("/api/jobs/saved/delete/" + jobid).then(() => {
       console.log("is it hitting this");
     });
     window.location.reload();
