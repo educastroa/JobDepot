@@ -19,7 +19,7 @@ export default function JobCard({ job, id }) {
 
   const addSavedJob = (e) => {
     e.preventDefault();
-
+    console.log("UNIQUE RUPE", job.job_id);
     axios
       .post("/api/users/saved", {
         employer_name: job.employer_name,
@@ -27,18 +27,23 @@ export default function JobCard({ job, id }) {
         job_posted_at_datetime_utc: job.job_posted_at_datetime_utc,
         job_apply_link: job.job_apply_link,
         job_description: job.job_description,
+        unique_job_id: job.job_id,
         user: user.id,
       })
       .then((res) => {});
     setSavedJob(true);
   };
 
+  console.log("meow", id);
+  console.log("woof", job.job_id);
+
   const removeSavedJob = (e) => {
     e.preventDefault();
-    console.log("xxxxxxxxxxxxxxxxxxxx", id);
 
-    axios.post("/api/users/saved/delete/" + id).then(() => {
-      console.log("is it hitting this");
+    console.log("ploop", job.job_id);
+
+    axios.post("/api/users/delete/" + job.job_id).then(() => {
+      console.log("is it hitting this moo");
     });
     setSavedJob(false);
   };

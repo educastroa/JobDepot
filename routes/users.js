@@ -162,6 +162,7 @@ module.exports = (db) => {
     const job_posted_at_datetime_utc = req.body.job_posted_at_datetime_utc;
     const job_apply_link = req.body.job_apply_link;
     const job_description = req.body.job_description;
+    const unique_job_id = req.body.unique_job_id;
     const user_id = req.body.user;
 
     console.log("blooper req:", req.body);
@@ -173,9 +174,9 @@ module.exports = (db) => {
             job_title,
             job_posted_at_datetime_utc,
             job_apply_link,
-            job_description,
+            job_description,unique_job_id,
             user_id)
-          VALUES ($1, $2, $3, $4, $5, $6);
+          VALUES ($1, $2, $3, $4, $5, $6, $7);
         `,
       [
         employer_name,
@@ -183,6 +184,7 @@ module.exports = (db) => {
         job_posted_at_datetime_utc,
         job_apply_link,
         job_description,
+        unique_job_id,
         user_id,
       ]
     )
@@ -193,10 +195,7 @@ module.exports = (db) => {
   });
 
   router.post("/saved/delete/:jobid", (req, res) => {
-    console.log(
-      "delete req params xxxxxxxxxxxx________________:",
-      req.params.jobid
-    );
+    console.log("delete req params ploop:", req.params.jobid);
     const jobid = req.params.jobid;
     db.query(
       `
@@ -205,9 +204,24 @@ module.exports = (db) => {
         `,
       [jobid]
     )
-      .then((res) => {
+      .then(() => {
         console.log("delete complete");
-        res.status(200);
+      })
+      .catch((err) => console.log("error", err));
+  });
+
+  router.post("/delete/:unique_job_id", (req, res) => {
+    console.log("delete req params plinky:", req.params.unique_job_id);
+    const unique_job_id = req.params.unique_job_id;
+    db.query(
+      `
+          DELETE FROM saved_jobs
+          WHERE unique_job_id = $1;
+        `,
+      [unique_job_id]
+    )
+      .then(() => {
+        console.log("delete moo");
       })
       .catch((err) => console.log("error", err));
   });
