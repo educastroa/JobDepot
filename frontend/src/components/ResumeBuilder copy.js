@@ -38,7 +38,7 @@ export default function ResumeBuilder(props) {
   const handleUpload = (e) => {
     e.preventDefault();
     axios
-      .post("/api/users/resume", {
+      .post("/api/resume", {
         full_name: full_name,
         contact_information: contact_information,
         skills: skills,

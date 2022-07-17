@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 import { jobParams, jobSearch } from "../api";
-import { useAppContext } from '../hooks';
+import { useAppContext } from "../hooks";
 import JobsList from "./JobsList";
 
 export default function SearchJob() {
@@ -13,10 +13,10 @@ export default function SearchJob() {
   const radiusSelectRef = useRef();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState({
-      employmentTypes: '',
-      query: '',
-      radius: '0',
-      remoteJobsOnly: false,
+    employmentTypes: "",
+    query: "",
+    radius: "0",
+    remoteJobsOnly: false,
   });
 
   const handleFetch = (e, isNewSearch) => {
@@ -29,49 +29,51 @@ export default function SearchJob() {
       setJobs([]);
     }
 
-    jobSearch({ ...search, page: currentPage })
-      .then(res => {
-        const resData = res?.data ?? [];
-        let currentData = resData;
+    jobSearch({ ...search, page: currentPage }).then((res) => {
+      const resData = res?.data ?? [];
+      let currentData = resData;
 
-        if (!isNewSearch) {
-          currentData = [...jobs, ...resData];
-          setPage(currentPage);
-        }
+      if (!isNewSearch) {
+        currentData = [...jobs, ...resData];
+        setPage(currentPage);
+      }
 
-        setJobs(currentData);
-        new bootstrap.Collapse(collapsibleRef.current, { toggle: false });
-      })
-  }
+      setJobs(currentData);
+      new bootstrap.Collapse(collapsibleRef.current, { toggle: false });
+    });
+  };
 
   const handleChange = (event) => {
     const name = event.target.name;
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-    setSearch(values => ({ ...values, [name]: value }));
-  }
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
+    setSearch((values) => ({ ...values, [name]: value }));
+  };
 
   const handleClear = () => {
-    employmentTypesSelectRef.current.value = '';
-    queryInputRef.current.value = '';
-    radiusSelectRef.current.value = '0';
+    employmentTypesSelectRef.current.value = "";
+    queryInputRef.current.value = "";
+    radiusSelectRef.current.value = "0";
     remoteCheckboxRef.current.checked = false;
 
     setSearch({
-      employmentTypes: '',
-      query: '',
-      radius: '0',
+      employmentTypes: "",
+      query: "",
+      radius: "0",
       remoteJobsOnly: false,
     });
 
     setJobs([]);
-  }
+  };
 
   return (
     <div className="h-100 overflow-hidden">
       <div className="d-flex flex-column h-100">
         <div className="mx-auto w-25">
           <h2 className="text-center py-4">Find Your Next Career Here </h2>
-          <form onSubmit={e => handleFetch(e, true)}>
+          <form onSubmit={(e) => handleFetch(e, true)}>
             <div className="mb-3">
               <label htmlFor="job-search-query" className="visually-hidden">
                 Search job posts
@@ -88,13 +90,18 @@ export default function SearchJob() {
                   onChange={handleChange}
                   required
                 />
-                <button type="submit" className="btn btn-success">Search</button>
+                <button type="submit" className="btn btn-success">
+                  Search
+                </button>
               </div>
             </div>
 
             <div className="collapse" id="advanced-search" ref={collapsibleRef}>
               <div className="mb-3">
-                <label htmlFor="job-search-remote" className="form-check-label me-2">
+                <label
+                  htmlFor="job-search-remote"
+                  className="form-check-label me-2"
+                >
                   Remote
                 </label>
                 <input
@@ -117,7 +124,9 @@ export default function SearchJob() {
                 value={search.employmentTypes}
                 onChange={handleChange}
               >
-                <option value="" disabled>Select Employment Type...</option>
+                <option value="" disabled>
+                  Select Employment Type...
+                </option>
                 <option value="FULLTIME">Full-Time</option>
                 <option value="PARTTIME">Part-Time</option>
                 <option value="CONTRACTOR">Contractor</option>
@@ -134,7 +143,9 @@ export default function SearchJob() {
                 value={search.radius}
                 onChange={handleChange}
               >
-                <option value="0" disabled>Select Search Radius...</option>
+                <option value="0" disabled>
+                  Select Search Radius...
+                </option>
                 <option value="10">10km</option>
                 <option value="25">25km</option>
                 <option value="50">50km</option>
@@ -144,24 +155,34 @@ export default function SearchJob() {
             </div>
 
             <div className="d-flex justify-content-between w-100">
-              <button type="button" className="btn btn-danger" onClick={handleClear}>Clear</button>
               <button
-                  type="button"
-                  className="btn btn-primary text-nowrap"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#advanced-search"
-                  aria-expanded="false"
-                  aria-controls="advanced-search"
-                  >
-                    Advanced Search
-                </button>
+                type="button"
+                className="btn btn-danger"
+                onClick={handleClear}
+              >
+                Clear
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary text-nowrap"
+                data-bs-toggle="collapse"
+                data-bs-target="#advanced-search"
+                aria-expanded="false"
+                aria-controls="advanced-search"
+              >
+                Advanced Search
+              </button>
             </div>
           </form>
         </div>
 
-        <div id="scrollableDiv" className="mx-auto w-100 mt-5 mb-2 overflow-auto" style={{ flex: 1, maxWidth: '1200px' }}>
+        <div
+          id="scrollableDiv"
+          className="mx-auto w-100 mt-5 mb-2 overflow-auto"
+          style={{ flex: 1, maxWidth: "1200px" }}
+        >
           {jobs.length > 0 && (
-            <JobsList onFetchData={() => handleFetch(null, false)}/>
+            <JobsList onFetchData={() => handleFetch(null, false)} />
           )}
         </div>
       </div>

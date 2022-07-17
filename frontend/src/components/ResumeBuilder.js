@@ -37,8 +37,9 @@ export default function ResumeBuilder(props) {
 
   const handleUpload = (e) => {
     e.preventDefault();
+    console.log("MOOP", full_name);
     axios
-      .post("/api/users/resume", {
+      .post("/api/resume", {
         full_name: full_name,
         contact_information: contact_information,
         skills: skills,
