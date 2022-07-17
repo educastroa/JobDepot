@@ -37,10 +37,8 @@ function App() {
 
           <main className="overflow-auto" style={{ flex: 1 }}>
             <Routes>
-              <Route path="login" element={<LoginForm />} />
-              <Route path="register" element={<RegisterForm />} />
               <Route
-                path="/search"
+                path="/"
                 element={
                   <RequireAuth>
                     <SearchJob />
@@ -48,15 +46,7 @@ function App() {
                 }
               />
               <Route
-                path=""
-                element={
-                  <RequireAuth>
-                    <SearchJob />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/resume"
+                path="resume"
                 element={
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
@@ -66,19 +56,32 @@ function App() {
                 }
               />
               <Route
-                path="/resume/view"
+                path="resume/view"
                 element={
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ViewResume />
- <Route
-                path="/salary"
+                    </div>
+                  </RequireAuth>
+                }
+                />
+              <Route
+                path="salary"
                 element={
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
-
                     </div>
+                  </RequireAuth>
+                }
+              />
+              <Route path="login" element={<LoginForm />} />
+              <Route path="register" element={<RegisterForm />} />
+              <Route
+                path="*"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
                   </RequireAuth>
                 }
               />

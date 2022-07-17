@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 import { sessionLogout } from "../api";
 import { useAppContext } from "../hooks";
 
 export default function Navbar() {
   const { user, setUser } = useAppContext();
+  const navigate = useNavigate();
 
   const onLogout = () => {
     setUser();
@@ -49,12 +51,18 @@ export default function Navbar() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="/search">
+                  <a
+                    className="dropdown-item"
+                    onClick={() =>  navigate("/", { replace: true })}  
+                  >
                     Jobs
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/salary">
+                  <a 
+                    className="dropdown-item"
+                    onClick={() =>  navigate("/salary", { replace: true })}
+                  >
                     Salaries
                   </a>
                 </li>
@@ -73,12 +81,18 @@ export default function Navbar() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="/resume/view">
+                  <a
+                    className="dropdown-item"
+                    onClick={() =>  navigate("/resume/view", { replace: true })}
+                  >
                     View
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/resume">
+                  <a
+                    className="dropdown-item"
+                    onClick={() =>  navigate("/resume", { replace: true })}
+                  >
                     Upload
                   </a>
                 </li>
