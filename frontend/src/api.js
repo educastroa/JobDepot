@@ -2,9 +2,19 @@ import axios from 'axios';
 
 export const login = (credentials) => axios.post('/api/users/login', credentials);
 
-export const getUser = () => axios.get('/api/users/me')
+export const getUser = () => axios.get('/api/users/me');
+
+export const getUsers = () => axios.get('/api/users').then(res => res.data);
+
+export const shareJob = (payload) => axios.post('/api/jobs', payload);
 
 export const sessionLogout = () => axios.post('/api/users/logout');
+
+export const getMessages = () => axios.get('/api/messages').then(res => res.data);
+
+
+
+
 
 export const jobSearch = ({
     employmentTypes,
@@ -44,8 +54,6 @@ export const jobSearch = ({
         });
 }
 
-
-
 export const salarySearch = ({
   job_title,
   location,
@@ -71,5 +79,3 @@ export const salarySearch = ({
             console.error(error);
         });
 }
-
-

@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { sessionLogout } from "../api";
 import { useAppContext } from "../hooks";
 
+
 export default function Navbar() {
   const { user, setUser } = useAppContext();
 
@@ -9,6 +10,8 @@ export default function Navbar() {
     setUser();
     sessionLogout();
   };
+
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-fixed-top">
@@ -83,6 +86,11 @@ export default function Navbar() {
                   </a>
                 </li>
               </ul>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/messages">
+                Messages
+              </a>
             </li>
           </ul>
         </div>
