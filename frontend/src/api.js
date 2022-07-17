@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-export const login = (credentials) => axios.post('/api/users/login', credentials);
+export const deleteJob = (payload) => axios.delete(`/api/jobs/saved/${payload.job_id}`).then(res => res);
 
-export const getUser = () => axios.get('/api/users/me');
+export const login = (payload) => axios.post('/api/users/login', payload).then(res => res);
 
-export const getUsers = () => axios.get('/api/users').then(res => res.data);
-
-export const shareJob = (payload) => axios.post('/api/jobs', payload);
-
-export const sessionLogout = () => axios.post('/api/users/logout');
+export const logout = () => axios.get('/api/users/logout').then(res => res);
 
 export const getMessages = () => axios.get('/api/messages').then(res => res.data);
 
+export const getUser = () => axios.get('/api/users/me').then(res => res.data);
 
+export const getUsers = () => axios.get('/api/users').then(res => res.data);
 
+export const saveJob = (payload) => axios.post("/api/jobs/saved", payload).then(res => res);
 
+export const shareJob = (payload) => axios.post('/api/jobs/shared', payload).then(res => res);
 
 export const jobSearch = ({
     employmentTypes,

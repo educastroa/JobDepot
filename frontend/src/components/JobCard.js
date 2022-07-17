@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import noImage from "./img/no-image.png";
-import axios from "axios";
-import { useAppContext } from "../hooks";
+import { deleteJob, saveJob } from "../api";
 import ShareJobPostModal from "./ShareJobPostModal";
 
 export default function JobCard({ job, id }) {
   const [src, setSrc] = useState('');
-  const { user, setUser } = useAppContext();
   const [savedjob, setSavedJob] = useState(false);
-
 
   const handleError = () => {
     setSrc(noImage);
@@ -21,32 +18,13 @@ export default function JobCard({ job, id }) {
 
   const addSavedJob = (e) => {
     e.preventDefault();
-    console.log("UNIQUE RUPE", job.job_id);
-    axios
-      .post("/api/jobs/saved", {
-        employer_name: job.employer_name,
-        job_title: job.job_title,
-        job_posted_at_datetime_utc: job.job_posted_at_datetime_utc,
-        job_apply_link: job.job_apply_link,
-        job_description: job.job_description,
-        unique_job_id: job.job_id,
-        user: user.id,
-      })
-      .then((res) => {});
+    saveJob(job);
     setSavedJob(true);
   };
 
-  console.log("meow", id);
-  console.log("woof", job.job_id);
-
   const removeSavedJob = (e) => {
     e.preventDefault();
-
-    console.log("ploop", job.job_id);
-
-    axios.post("/api/jobs/delete/" + job.job_id).then(() => {
-      console.log("is it hitting this moo");
-    });
+    deleteJob(job);
     setSavedJob(false);
   };
 
@@ -62,12 +40,10 @@ export default function JobCard({ job, id }) {
                 onError={handleError}
                 height="auto"
                 width="64" />
-
             </div>
-
             <div className="d-flex flex-wrap align-items-center overflow-hidden me-4">
               <div className="w-100"
-              value={job.employer_name}>
+                value={job.employer_name}>
                 <b>Employer: </b>
                 {job.employer_name}
               </div>
@@ -80,9 +56,9 @@ export default function JobCard({ job, id }) {
                 {job.job_posted_at_datetime_utc != null
 
                   ? format(
-                      new Date(job.job_posted_at_datetime_utc),
-                      "MM/dd/yyyy - hh:mm aaa"
-                    )
+                    new Date(job.job_posted_at_datetime_utc),
+                    "MM/dd/yyyy - hh:mm aaa"
+                  )
                   : "N/A"}
               </div>
               <div className="w-100">
@@ -92,8 +68,6 @@ export default function JobCard({ job, id }) {
               </div>
             </div>
           </div>
-
-
           <div className="d-flex align-content-end me-4">
             <div>
               <button
@@ -106,8 +80,20 @@ export default function JobCard({ job, id }) {
               >
                 See More...
               </button>
+              <div className="button-2">
+                <button
+                  type="button"
+                  className="btn btn-light text-nowrap"
+                  data-toggle={savedjob}
+                  aria-pressed="false"
+                  autoComplete="off"
+                  onClick={savedjob ? removeSavedJob : addSavedJob}
+                >
+                  {savedjob ? "Job Saved" : "Like"}
+                </button>
+              </div>
             </div>
-            <ShareJobPostModal id={id} job={job} employerImgSrc={src}/>
+            <ShareJobPostModal id={id} job={job} employerImgSrc={src} />
           </div>
         </div>
       </div>
@@ -116,38 +102,12 @@ export default function JobCard({ job, id }) {
           <b>Job description:</b>
 
           {job.job_description}
-
-          <div className="button-2">
-            <button
-              type="button"
-              className="btn btn-light text-nowrap"
-              data-bs-toggle="collapse"
-              data-bs-target={`#jobs-${id}`}
-              aria-expanded="false"
-              aria-controls={`jobs-${id}`}
-            >
-              See More...
-            </button>
-
-            <button
-              type="button"
-              className="btn btn-light text-nowrap"
-              data-toggle={savedjob}
-              aria-pressed="false"
-              autocomplete="off"
-              onClick={savedjob ? removeSavedJob : addSavedJob}
-            >
-              {savedjob ? "Job Saved" : "Like"}
-            </button>
-          </div>
         </div>
         <div className="collapse" id={`jobs-${id}`}>
           <div className="card card-body">
             <b>Job description:</b>
-
             {job.job_description}
           </div>
-
         </div>
       </div>
     </div>
