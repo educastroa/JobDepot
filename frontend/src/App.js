@@ -8,7 +8,7 @@ import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearch from "./components/SalarySearch";
 import LoginForm from "./components/Login";
 import ViewResume from "./components/ViewResume";
-
+import Messages from "./components/Messages";
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 
@@ -71,13 +71,28 @@ function App() {
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ViewResume />
- <Route
+                    </div>
+                  </RequireAuth>
+                }
+              />
+
+              <Route
                 path="/salary"
                 element={
                   <RequireAuth>
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
 
+                    </div>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="messages"
+                element={
+                  <RequireAuth>
+                    <div className="scrollbar scrollbar-primary mx-auto">
+                      <Messages />
                     </div>
                   </RequireAuth>
                 }
