@@ -37,7 +37,7 @@ export default function ViewResume({ onFetchData }) {
       loader={<h4 className="text-center"></h4>}
       scrollableTarget="scrollableDiv"
     >
-      <div className="resume-view-list">
+      <div className="mx-auto mt-4" style={{ maxWidth: '1200px' }}>
         <ul className="saved-jobs-list">
           {savedjobs.map((savedjobsinfo) => (
             <div className="my-3">

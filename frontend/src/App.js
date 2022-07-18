@@ -12,6 +12,7 @@ import MessageList from "./components/MessageList";
 import SavedJobs from "./components/SavedJobs";
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
+import Weather from "./components/Weather";
 
 import { getUser } from "./api";
 import { useAppContext } from "./hooks";
@@ -35,8 +36,10 @@ function App() {
         <div className="d-flex flex-column vh-100">
           <Header />
           <Navbar />
+          <Weather />
 
-          <main className="overflow-auto" style={{ flex: 1 }}>
+
+          <main className="d-flex flex-column overflow-auto" style={{ flex: 1 }}>
             <Routes>
               <Route
                 index
@@ -107,9 +110,12 @@ function App() {
                 }
               />
             </Routes>
+
+            <Footer />
+
           </main>
 
-          <Footer />
+
         </div>
       )}
     </Fragment>

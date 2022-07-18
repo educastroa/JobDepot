@@ -3,8 +3,8 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <footer className="custom-footer fs-9">
-      <div className="container my-6">
+    <footer className="custom-footer mt-auto">
+      <div className="container">
         <div className="row align-items-start">
           <div className="col text-center pt-3">
 

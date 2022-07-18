@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { format } from 'date-fns';
-import headerImg from "./img/headerImg2.jpg";
 import "./Header.css";
 
 import { getUsers, shareJob } from "../api";
 import { useAppContext } from "../hooks";
 
 export default function ShareJobPostModal({ employerImgSrc, job, id }) {
-
   const { user } = useAppContext();
   const [receiver, setReceiver] = useState('');
   const [users, setUsers] = useState([]);

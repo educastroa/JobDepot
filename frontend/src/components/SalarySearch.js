@@ -14,7 +14,6 @@ export default function SalarySearch() {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
-
   const onSearch = () => {
     salarySearch({ job_title: inputs.job_title, location: inputs.location })
       .then(res => {
@@ -25,10 +24,6 @@ export default function SalarySearch() {
   const handleClear = () => {
     setSalaryResults([]);
   };
-
-
-
-
 
   return (
     <div className="h-100 overflow-hidden">

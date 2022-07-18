@@ -61,14 +61,14 @@ export default function ResumeBuilder(props) {
 
   return (
     <form>
-      <ul className="flex-outer">
+      <ul className="flex-outer" >
         <li>
           <label htmlFor="full-name">Full Name</label>
           <input
             type="text"
             id="full-name"
             placeholder="Enter your name here"
-            className="full-name-input"
+            className="form-control"
             value={full_name}
             onChange={handleFullName}
           ></input>
