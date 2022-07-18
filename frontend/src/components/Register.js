@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../api";
 import { useAppContext } from "../hooks";
 import axios from "axios";
+import "./LoginAndRegister.css";
 
 export default function RegisterForm() {
   const { user, setUser } = useAppContext();
@@ -104,7 +105,18 @@ export default function RegisterForm() {
                         </section>
                       </div>
                     </div>
-
+                    <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
+                      <div className="px-3 py-4 p-md-5 mx-md-4">
+                        <h4 className="mb-4">
+                          Create an account to access millions of opportunities
+                        </h4>
+                        <p className="small mb-0">
+                          Sign up for a Glassdoor account to get instant access
+                          to millions of salaries, company reviews and interview
+                          questions. Register today.
+                        </p>
+                      </div>
+                    </div>
                     <div className="d-flex align-items-center justify-content-center pb-4">
                       <p className="mb-0 me-2">Return to </p>
                       <button

@@ -33,7 +33,6 @@ function App() {
     <Fragment>
       {checked && (
         <div className="d-flex flex-column vh-100">
-          <Header />
           <Navbar />
 
           <main className="overflow-auto" style={{ flex: 1 }}>
@@ -44,6 +43,8 @@ function App() {
                 path="/search"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <SearchJob />
                   </RequireAuth>
                 }
@@ -52,6 +53,8 @@ function App() {
                 path=""
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <SearchJob />
                   </RequireAuth>
                 }
@@ -60,6 +63,8 @@ function App() {
                 path="/resume"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ResumeBuilder />
                     </div>
@@ -70,6 +75,8 @@ function App() {
                 path="/resume/view"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ViewResume />
                     </div>
@@ -80,6 +87,8 @@ function App() {
                 path="/salary"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
                     </div>
@@ -90,6 +99,8 @@ function App() {
                 path="/saved"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SavedJobs />
                     </div>
@@ -100,6 +111,7 @@ function App() {
                 path="messages"
                 element={
                   <RequireAuth>
+                    <Header />
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <Messages />
                     </div>

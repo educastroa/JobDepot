@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { login, getUser } from "../api";
 import { useAppContext } from "../hooks";
+import "./LoginAndRegister.css";
 
 export default function LoginForm() {
   const { user, setUser } = useAppContext();
@@ -15,8 +16,7 @@ export default function LoginForm() {
   };
 
   const onLogin = () => {
-    login({ email: inputs.email, password: inputs.password })
-    .then((res) => {
+    login({ email: inputs.email, password: inputs.password }).then((res) => {
       setUser(res.data);
       navigate("/", { replace: true });
     });
@@ -47,7 +47,7 @@ export default function LoginForm() {
                           <img style={{ width: "185px" }} alt="logo"></img>
 
                           <h4 className="mt-1 mb-5 pb-1">
-                            We are Job Search Team
+                            Welcome to Job Search!
                           </h4>
                         </div>
 
@@ -60,7 +60,6 @@ export default function LoginForm() {
                         >
                           <section>
                             <p>Please login to your account</p>
-
                             <div className="form-outline mb-4">
                               <input
                                 onChange={handleChange}
@@ -71,12 +70,6 @@ export default function LoginForm() {
                                 autoComplete="true"
                                 required
                               />
-                              <label
-                                className="form-label"
-                                htmlFor="form2Example11"
-                              >
-                                Email
-                              </label>
                             </div>
 
                             <div className="form-outline mb-4">
@@ -85,15 +78,10 @@ export default function LoginForm() {
                                 type="password"
                                 id="password"
                                 className="form-control"
+                                placeholder="Password"
                                 autoComplete="true"
                                 required
                               />
-                              <label
-                                className="form-label"
-                                htmlFor="form2Example22"
-                              >
-                                Password
-                              </label>
                             </div>
 
                             <div className="text-center pt-1 mb-5 pb-1">
@@ -117,7 +105,7 @@ export default function LoginForm() {
                                   navigate("/register", { replace: true })
                                 }
                               >
-                                Create new
+                                Register
                               </button>
                             </div>
                           </section>
@@ -130,11 +118,12 @@ export default function LoginForm() {
                           We are more than just a company
                         </h4>
                         <p className="small mb-0">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Ut enim ad minim veniam, quis
-                          nostrud exercitation ullamco laboris nisi ut aliquip
-                          ex ea commodo consequat.
+                          JobSearch is the #1 job site in the world with over
+                          250M unique visitors every month. JobSearch strives to
+                          put job seekers first, giving them free access to
+                          search for jobs, post resumes, and research companies.
+                          Every day, we connect millions of people to new
+                          opportunities.
                         </p>
                       </div>
                     </div>
