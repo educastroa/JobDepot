@@ -19,21 +19,6 @@ export default function ResumeBuilder(props) {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  // const uploadResume = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post("/api/resume", {
-  //       full_name: inputs.full_name,
-  //       contact_information: inputs.contact_information,
-  //       skills: inputs.skills,
-  //       work_experience: inputs.work_experience,
-  //       education: inputs.education,
-  //       user: user.id,
-  //     })
-  //     .then((res) => {});
-  //   navigate("/resume/view");
-  // };
-
   const uploadButton = () => {
     uploadResume({
       full_name: inputs.full_name,

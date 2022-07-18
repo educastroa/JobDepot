@@ -16,6 +16,23 @@ export const getMessages = () =>
 
 export const uploadResume = (payload) => axios.post("api/resume", payload);
 
+export const getResume = () =>
+  axios.get("/api/resume/view").then((res) => res.data);
+
+export const getSavedJobs = () =>
+  axios.get("/api/jobs/saved").then((res) => res.data);
+
+export const removeSavedJobs = (data) =>
+  axios.post("/api/jobs/saved/delete/" + data).then((res) => res.data);
+
+export const registerUser = (payload) =>
+  axios.post("/api/users/register", payload);
+
+export const addSavedJob = (payload) => axios.post("/api/jobs/saved", payload);
+
+export const removeSavedJob = (data) =>
+  axios.post("/api/jobs/delete/" + data).then((res) => res.data);
+
 export const jobSearch = ({
   employmentTypes,
   numPages = 2,

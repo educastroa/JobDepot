@@ -1,9 +1,8 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../api";
 import { useAppContext } from "../hooks";
-import axios from "axios";
 import "./LoginAndRegister.css";
+import { registerUser } from "../api";
 
 export default function RegisterForm() {
   const { user, setUser } = useAppContext();
@@ -16,18 +15,13 @@ export default function RegisterForm() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const registerUser = (e) => {
-    e.preventDefault();
-    console.log("INPUTS MEEP", inputs);
-    axios
-      .post("/api/users/register", {
-        first_name: inputs.first_name,
-        last_name: inputs.last_name,
-        email: inputs.email,
-        password: inputs.password,
-      })
-      .then((res) => {})
-      .catch((err) => console.log("ERROR MEEP", err));
+  const registerUserButton = () => {
+    registerUser({
+      first_name: inputs.first_name,
+      last_name: inputs.last_name,
+      email: inputs.email,
+      password: inputs.password,
+    });
     navigate("/login");
   };
 
@@ -43,8 +37,6 @@ export default function RegisterForm() {
                     <div className="col-lg-6">
                       <div className="card-body p-md-5 mx-md-4">
                         <div className="text-center">
-                          <img style={{ width: "185px" }} alt="logo"></img>
-
                           <h4 className="mt-1 mb-5 pb-1">
                             Create a JobSearch account
                           </h4>
@@ -97,7 +89,7 @@ export default function RegisterForm() {
                             <button
                               className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
                               type="submit"
-                              onClick={registerUser}
+                              onClick={registerUserButton}
                             >
                               Register
                             </button>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import noImage from "./img/no-image.png";
-import axios from "axios";
 import { useAppContext } from "../hooks";
 import ShareJobPostModal from "./ShareJobPostModal";
+import { addSavedJob, removeSavedJob } from "../api";
 
 export default function JobCard({ job, id }) {
   const [src, setSrc] = useState("");
@@ -18,34 +18,29 @@ export default function JobCard({ job, id }) {
     setSrc(job.employer_logo ?? noImage);
   }, []);
 
-  const addSavedJob = (e) => {
-    e.preventDefault();
-    console.log("UNIQUE RUPE", job.job_id);
-    axios
-      .post("/api/jobs/saved", {
-        employer_name: job.employer_name,
-        job_title: job.job_title,
-        job_posted_at_datetime_utc: job.job_posted_at_datetime_utc,
-        job_apply_link: job.job_apply_link,
-        job_description: job.job_description,
-        unique_job_id: job.job_id,
-        user: user.id,
-      })
-      .then((res) => {});
+  const addSavedJobButton = () => {
+    addSavedJob({
+      employer_name: job.employer_name,
+      job_title: job.job_title,
+      job_posted_at_datetime_utc: job.job_posted_at_datetime_utc,
+      job_apply_link: job.job_apply_link,
+      job_description: job.job_description,
+      unique_job_id: job.job_id,
+      user: user.id,
+    });
+    console.log("ADDED");
     setSavedJob(true);
   };
 
-  console.log("meow", id);
-  console.log("woof", job.job_id);
+  console.log("bloop", job.job_id);
 
-  const removeSavedJob = (e) => {
-    e.preventDefault();
-
-    console.log("ploop", job.job_id);
-
-    axios.post("/api/jobs/delete/" + job.job_id).then(() => {
-      console.log("is it hitting this moo");
-    });
+  const removeSavedJobButton = () => {
+    console.log("meep", job.job_id);
+    removeSavedJob(job.job_id)
+      .then(() => {
+        console.log("moop");
+      })
+      .catch((err) => console.log("Error found here:", err));
     setSavedJob(false);
   };
 
@@ -105,7 +100,7 @@ export default function JobCard({ job, id }) {
                 data-toggle={savedjob}
                 aria-pressed="false"
                 autocomplete="off"
-                onClick={savedjob ? removeSavedJob : addSavedJob}
+                onClick={savedjob ? removeSavedJobButton : addSavedJobButton}
               >
                 {savedjob ? "Job Saved" : "Like"}
               </button>

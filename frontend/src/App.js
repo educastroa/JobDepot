@@ -9,7 +9,7 @@ import SalarySearch from "./components/SalarySearch";
 import LoginForm from "./components/Login";
 import ViewResume from "./components/ViewResume";
 import Messages from "./components/Messages";
-import SavedJobs from "./components/SavedJobs";
+import SavedJob from "./components/SavedJobs";
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 
@@ -34,91 +34,92 @@ function App() {
       {checked && (
         <div className="d-flex flex-column vh-100">
           <Navbar />
+          <main className="loginform">
+            <main className="overflow-auto" style={{ flex: 1 }}>
+              <Routes>
+                <Route path="login" element={<LoginForm />} />
+                <Route path="register" element={<RegisterForm />} />
+                <Route
+                  path="/search"
+                  element={
+                    <RequireAuth>
+                      <Header />
 
-          <main className="overflow-auto" style={{ flex: 1 }}>
-            <Routes>
-              <Route path="login" element={<LoginForm />} />
-              <Route path="register" element={<RegisterForm />} />
-              <Route
-                path="/search"
-                element={
-                  <RequireAuth>
-                    <Header />
+                      <SearchJob />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path=""
+                  element={
+                    <RequireAuth>
+                      <Header />
 
-                    <SearchJob />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path=""
-                element={
-                  <RequireAuth>
-                    <Header />
+                      <SearchJob />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/resume"
+                  element={
+                    <RequireAuth>
+                      <Header />
 
-                    <SearchJob />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/resume"
-                element={
-                  <RequireAuth>
-                    <Header />
+                      <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
+                        <ResumeBuilder />
+                      </div>
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/resume/view"
+                  element={
+                    <RequireAuth>
+                      <Header />
 
-                    <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
-                      <ResumeBuilder />
-                    </div>
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/resume/view"
-                element={
-                  <RequireAuth>
-                    <Header />
+                      <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
+                        <ViewResume />
+                      </div>
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/salary"
+                  element={
+                    <RequireAuth>
+                      <Header />
 
-                    <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
-                      <ViewResume />
-                    </div>
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/salary"
-                element={
-                  <RequireAuth>
-                    <Header />
+                      <div className="scrollbar scrollbar-primary mx-auto">
+                        <SalarySearch />
+                      </div>
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/saved"
+                  element={
+                    <RequireAuth>
+                      <Header />
 
-                    <div className="scrollbar scrollbar-primary mx-auto">
-                      <SalarySearch />
-                    </div>
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/saved"
-                element={
-                  <RequireAuth>
-                    <Header />
-
-                    <div className="scrollbar scrollbar-primary mx-auto">
-                      <SavedJobs />
-                    </div>
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="messages"
-                element={
-                  <RequireAuth>
-                    <Header />
-                    <div className="scrollbar scrollbar-primary mx-auto">
-                      <Messages />
-                    </div>
-                  </RequireAuth>
-                }
-              />
-            </Routes>
+                      <div className="scrollbar scrollbar-primary mx-auto">
+                        <SavedJob />
+                      </div>
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="messages"
+                  element={
+                    <RequireAuth>
+                      <Header />
+                      <div className="scrollbar scrollbar-primary mx-auto">
+                        <Messages />
+                      </div>
+                    </RequireAuth>
+                  }
+                />
+              </Routes>
+            </main>
           </main>
 
           <Footer />

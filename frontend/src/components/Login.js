@@ -44,8 +44,6 @@ export default function LoginForm() {
                     <div className="col-lg-6">
                       <div className="card-body p-md-5 mx-md-4">
                         <div className="text-center">
-                          <img style={{ width: "185px" }} alt="logo"></img>
-
                           <h4 className="mt-1 mb-5 pb-1">
                             Welcome to Job Search!
                           </h4>

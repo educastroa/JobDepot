@@ -1,26 +1,20 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./ViewResume.css";
+import { getResume } from "../api";
 
 export default function ViewResume() {
   const [resume, setResume] = useState([]);
 
-  const getResume = () => {
-    axios
-      // /api/resume/view
-      //https://jsonplaceholder.typicode.com/resume
-      .get("/api/resume/view")
-      .then((res) => {
-        console.log("res data:", res.data);
-        setResume(res.data);
+  const fetchResume = () => {
+    getResume()
+      .then((data) => {
+        setResume(data);
       })
       .catch((err) => console.log("Error found here:", err));
   };
 
-  console.log("resume here:", resume);
-
   useEffect(() => {
-    getResume();
+    fetchResume();
   }, []);
 
   return (
