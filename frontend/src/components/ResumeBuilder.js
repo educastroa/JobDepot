@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { uploadResume } from "../api";
 import "./ResumeBuilder.css";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../hooks";
@@ -19,18 +19,30 @@ export default function ResumeBuilder(props) {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleUpload = (e) => {
-    e.preventDefault();
-    axios
-      .post("/api/resume", {
-        full_name: inputs.full_name,
-        contact_information: inputs.contact_information,
-        skills: inputs.skills,
-        work_experience: inputs.work_experience,
-        education: inputs.education,
-        user: user.id,
-      })
-      .then((res) => {});
+  // const uploadResume = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("/api/resume", {
+  //       full_name: inputs.full_name,
+  //       contact_information: inputs.contact_information,
+  //       skills: inputs.skills,
+  //       work_experience: inputs.work_experience,
+  //       education: inputs.education,
+  //       user: user.id,
+  //     })
+  //     .then((res) => {});
+  //   navigate("/resume/view");
+  // };
+
+  const uploadButton = () => {
+    uploadResume({
+      full_name: inputs.full_name,
+      contact_information: inputs.contact_information,
+      skills: inputs.skills,
+      work_experience: inputs.work_experience,
+      education: inputs.education,
+      user: user.id,
+    });
     navigate("/resume/view");
   };
 
@@ -102,7 +114,7 @@ export default function ResumeBuilder(props) {
           ></input>
         </li>
         <li>
-          <button className="resume-submit" onClick={handleUpload}>
+          <button className="resume-submit" onClick={uploadButton}>
             Upload
           </button>
           <button className="resume-clear" onClick={resetForm}>
