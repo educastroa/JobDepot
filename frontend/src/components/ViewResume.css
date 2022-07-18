@@ -2,12 +2,6 @@
   display: flex;
   list-style: none;
 }
-/* .create {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 500px;
-} */
 
 .address {
   display: flex;
@@ -71,7 +65,7 @@ padding: 0;
 .flex-outer {
 max-width: 800px;
 margin: 0 auto;
-padding-bottom: 20em;
+padding-bottom: 5em;
 }
 
 .flex-outer li,

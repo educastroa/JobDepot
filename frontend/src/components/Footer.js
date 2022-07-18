@@ -57,46 +57,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      {/* <div className="icons">
-        <select name="plan" id="plan">
-          <option value="free">French (CA)</option>
-          <option value="starter" selected>
-            English (CA){" "}
-          </option>
-        </select>
-
-        <div className="social-icons">
-          <SocialIcon
-            url="https://facebook.com/jaketrent"
-            style={{ height: 25, width: 25 }}
-            bgColor="#F1B24A"
-          />
-
-          <SocialIcon
-            url="https://linkedin.com/in/jaketrent"
-            style={{ height: 25, width: 25 }}
-            bgColor="#F1B24A"
-          />
-
-          <SocialIcon
-            url="https://twitter.com/in/jaketrent"
-            style={{ height: 25, width: 25 }}
-            bgColor="#F1B24A"
-          />
-
-          <SocialIcon
-            url="https://youtube.com/jaketrent"
-            style={{ height: 25, width: 25 }}
-            bgColor="#F1B24A"
-          />
-
-          <SocialIcon
-            url="https://instagram.com/jaketrent"
-            style={{ height: 25, width: 25 }}
-            bgColor="#F1B24A"
-          />
-        </div>
-      </div> */}
       <div className="d-flex justify-content-center pb-3">
         &copy;{new Date().getFullYear()} Job Search | All rights reserved |
         Terms Of Service | Privacy

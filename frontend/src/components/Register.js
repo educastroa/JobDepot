@@ -98,7 +98,7 @@ export default function RegisterForm() {
                       </div>
                     </div>
                     <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
-                      <div className="px-3 py-4 p-md-5 mx-md-4">
+                      <div className="px-3 py-4 mx-md-4">
                         <h4 className="mb-4">
                           Create an account to access millions of opportunities
                         </h4>

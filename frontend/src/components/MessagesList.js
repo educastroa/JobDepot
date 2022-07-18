@@ -1,26 +1,23 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { format } from 'date-fns';
-import noImage from './img/no-image.png';
-import { useAppContext } from '../hooks';
+import { format } from "date-fns";
+import noImage from "./img/no-image.png";
+import { useAppContext } from "../hooks";
 import { getMessages } from "../api";
 
-
 export default function MessagesList({ message, id }) {
-  const [src, setSrc] = useState('');
+  const [src, setSrc] = useState("");
 
   const handleError = () => {
     setSrc(noImage);
   };
 
-
   useEffect(() => {
-    setSrc(message.image ?? noImage)
-
+    setSrc(message.image ?? noImage);
   }, []);
 
   return (
     <Fragment>
-      <div className="mx-auto mt-4" style={{ maxWidth: '800px' }}>
+      <div className="mx-auto mt-4" style={{ maxWidth: "800px" }}>
         <div className="my-3">
           <div className="card">
             <div className="card-body d-flex justify-content-between align-items-center">
@@ -30,11 +27,11 @@ export default function MessagesList({ message, id }) {
                     src={src}
                     onError={handleError}
                     height="auto"
-                    width="64" />
+                    width="64"
+                  />
                 </div>
 
                 <div className="d-flex flex-wrap align-items-center overflow-hidden me-4">
-
                   <div className="w-100">
                     <b>Employer: </b>
                     {message.employer}
@@ -44,11 +41,11 @@ export default function MessagesList({ message, id }) {
                     {message.job_title}
                   </div>
                   <div className="w-100">
-                    <a href={message.job_url} target="_blank"><b>Apply Here</b></a>
+                    <a href={message.job_url} target="_blank">
+                      <b>Apply Here</b>
+                    </a>
                   </div>
-                  <div className="w-100">
-                    {/* <a href={job.job_apply_link} target="_blank"><b>Apply Here</b></a> */}
-                  </div>
+                  <div className="w-100"></div>
                 </div>
               </div>
 
@@ -73,8 +70,6 @@ export default function MessagesList({ message, id }) {
           </div>
         </div>
       </div>
-
     </Fragment>
   );
 }
-

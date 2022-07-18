@@ -144,11 +144,6 @@ export default function ResumeBuilder(props) {
               </div>
             </label>
           </form>
-          {/* <h5>Upload Your CV</h5>
-          <form action="/action_page.pdf">
-            <input type="file" id="myFile" name="filename"></input>
-            <input type="submit" onClick={test}></input>
-          </form> */}
         </div>
       </ul>
     </form>
