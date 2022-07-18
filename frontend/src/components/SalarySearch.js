@@ -26,9 +26,7 @@ export default function SalarySearch() {
     setSalaryResults([]);
   };
 
-  useEffect(() => {
-    console.log(salaryResults);
-  }, [salaryResults]);
+
 
 
 

@@ -11,13 +11,11 @@ export default function ViewResume() {
       //https://jsonplaceholder.typicode.com/resume
       .get("/api/resume/view")
       .then((res) => {
-        console.log("res data:", res.data);
         setResume(res.data);
       })
       .catch((err) => console.log("Error found here:", err));
   };
 
-  console.log("resume here:", resume);
 
   useEffect(() => {
     getResume();
