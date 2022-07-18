@@ -35,7 +35,7 @@ export default function RegisterForm() {
                 <div className="card rounded-3 text-black">
                   <div className="row g-0">
                     <div className="col-lg-6">
-                      <div className="card-body p-md-5 mx-md-4">
+                      <div className="card-body mx-md-4">
                         <div className="text-center">
                           <h4 className="mt-1 mb-5 pb-1">
                             Create a JobSearch account
