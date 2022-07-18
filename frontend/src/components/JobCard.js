@@ -21,7 +21,6 @@ export default function JobCard({ job, id }) {
 
   const addSavedJob = (e) => {
     e.preventDefault();
-    console.log("UNIQUE RUPE", job.job_id);
     axios
       .post("/api/jobs/saved", {
         employer_name: job.employer_name,
@@ -36,16 +35,11 @@ export default function JobCard({ job, id }) {
     setSavedJob(true);
   };
 
-  console.log("meow", id);
-  console.log("woof", job.job_id);
-
   const removeSavedJob = (e) => {
     e.preventDefault();
 
-    console.log("ploop", job.job_id);
-
     axios.post("/api/jobs/delete/" + job.job_id).then(() => {
-      console.log("is it hitting this moo");
+
     });
     setSavedJob(false);
   };
@@ -106,6 +100,18 @@ export default function JobCard({ job, id }) {
               >
                 See More...
               </button>
+              <div className="button-2">
+            <button
+              type="button"
+              className="btn btn-light text-nowrap"
+              data-toggle={savedjob}
+              aria-pressed="false"
+              autoComplete="off"
+              onClick={savedjob ? removeSavedJob : addSavedJob}
+            >
+              {savedjob ? "Job Saved" : "Like"}
+            </button>
+          </div>
             </div>
             <ShareJobPostModal id={id} job={job} employerImgSrc={src}/>
           </div>
@@ -117,29 +123,7 @@ export default function JobCard({ job, id }) {
 
           {job.job_description}
 
-          <div className="button-2">
-            <button
-              type="button"
-              className="btn btn-light text-nowrap"
-              data-bs-toggle="collapse"
-              data-bs-target={`#jobs-${id}`}
-              aria-expanded="false"
-              aria-controls={`jobs-${id}`}
-            >
-              See More...
-            </button>
 
-            <button
-              type="button"
-              className="btn btn-light text-nowrap"
-              data-toggle={savedjob}
-              aria-pressed="false"
-              autocomplete="off"
-              onClick={savedjob ? removeSavedJob : addSavedJob}
-            >
-              {savedjob ? "Job Saved" : "Like"}
-            </button>
-          </div>
         </div>
         <div className="collapse" id={`jobs-${id}`}>
           <div className="card card-body">

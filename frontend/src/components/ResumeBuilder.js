@@ -63,7 +63,7 @@ export default function ResumeBuilder(props) {
     <form>
       <ul className="flex-outer">
         <li>
-          <label for="full-name">Full Name</label>
+          <label htmlFor="full-name">Full Name</label>
           <input
             type="text"
             id="full-name"
@@ -74,7 +74,7 @@ export default function ResumeBuilder(props) {
           ></input>
         </li>
         <li>
-          <label for="contact-info">Contact Infomation</label>
+          <label htmlFor="contact-info">Contact Infomation</label>
           <input
             type="text"
             id="contact-info"
@@ -85,7 +85,7 @@ export default function ResumeBuilder(props) {
           ></input>
         </li>
         <li>
-          <label for="Skills">Skills</label>
+          <label htmlFor="Skills">Skills</label>
           <input
             type="skills"
             id="skills"
@@ -96,7 +96,7 @@ export default function ResumeBuilder(props) {
           ></input>
         </li>
         <li>
-          <label for="work-experience">Previous Work Experience</label>
+          <label htmlFor="work-experience">Previous Work Experience</label>
           <input
             type="work-experience"
             id="work-experience"
@@ -107,7 +107,7 @@ export default function ResumeBuilder(props) {
           ></input>
         </li>
         <li>
-          <label for="education">Education</label>
+          <label htmlFor="education">Education</label>
           <textarea
             rows="6"
             id="education"

@@ -12,7 +12,7 @@ export const sessionLogout = () => axios.post('/api/users/logout');
 
 export const getMessages = () => axios.get('/api/messages').then(res => res.data);
 
-
+export const register = (payload) => axios.post('/api/users/register', payload);
 
 
 

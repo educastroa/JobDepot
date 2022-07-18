@@ -11,28 +11,20 @@ export default function ViewResume({ onFetchData }) {
 
   const getSavedJobs = () => {
     axios
-      // /api/jobs/view
-      //https://jsonplaceholder.typicode.com/resume
       .get("/api/jobs/saved")
       .then((res) => {
-        console.log("res data:", res.data);
-        setSavedJobs(res.data);
+      setSavedJobs(res.data);
       })
       .catch((err) => console.log("Error found here:", err));
   };
-
-  console.log("savedjobs:", savedjobs);
 
   useEffect(() => {
     getSavedJobs();
   }, []);
 
   const removeSavedButton = (jobid) => {
-    // e.preventDefault();
-    console.log("xxxxxxxxxxxxxxxxxxxx", jobid);
 
     axios.post("/api/jobs/saved/delete/" + jobid).then(() => {
-      console.log("is it hitting this");
     });
     window.location.reload();
   };
@@ -90,12 +82,12 @@ export default function ViewResume({ onFetchData }) {
                     >
                       See More...
                     </button>
-                    <div class="space"></div>
-                    <div class="space"></div>
-                    <div class="space"></div>
+                    <div className="space"></div>
+                    <div className="space"></div>
+                    <div className="space"></div>
                     <button
                       type="button"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       onClick={() => removeSavedButton(savedjobsinfo.id)}
                     >
                       Remove
