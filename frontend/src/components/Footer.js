@@ -1,5 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./Footer.css";
+import ReactDOM from "react-dom";
+import { SocialIcon } from "react-social-icons";
 
 export default function Footer() {
   return (
@@ -7,7 +9,6 @@ export default function Footer() {
       <div className="container my-6">
         <div className="row align-items-start">
           <div className="col text-center pt-3">
-
             <h4>Job Search</h4>
             <ul className="list-unstyled">
               <li>123-345-6789</li>
@@ -47,23 +48,59 @@ export default function Footer() {
                 </a>
               </li>
 
-                <li>
-                  <a href="#" className="text-decoration-none fs-7 link-light">
-                    Careers
-                  </a>
-                </li>
-
+              <li>
+                <a href="#" className="text-decoration-none fs-7 link-light">
+                  Careers
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
+      {/* <div className="icons">
+        <select name="plan" id="plan">
+          <option value="free">French (CA)</option>
+          <option value="starter" selected>
+            English (CA){" "}
+          </option>
+        </select>
 
+        <div className="social-icons">
+          <SocialIcon
+            url="https://facebook.com/jaketrent"
+            style={{ height: 25, width: 25 }}
+            bgColor="#F1B24A"
+          />
+
+          <SocialIcon
+            url="https://linkedin.com/in/jaketrent"
+            style={{ height: 25, width: 25 }}
+            bgColor="#F1B24A"
+          />
+
+          <SocialIcon
+            url="https://twitter.com/in/jaketrent"
+            style={{ height: 25, width: 25 }}
+            bgColor="#F1B24A"
+          />
+
+          <SocialIcon
+            url="https://youtube.com/jaketrent"
+            style={{ height: 25, width: 25 }}
+            bgColor="#F1B24A"
+          />
+
+          <SocialIcon
+            url="https://instagram.com/jaketrent"
+            style={{ height: 25, width: 25 }}
+            bgColor="#F1B24A"
+          />
+        </div>
+      </div> */}
       <div className="d-flex justify-content-center pb-3">
         &copy;{new Date().getFullYear()} Job Search | All rights reserved |
         Terms Of Service | Privacy
       </div>
-
     </footer>
-
   );
 }

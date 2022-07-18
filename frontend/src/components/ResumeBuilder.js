@@ -99,10 +99,10 @@ export default function ResumeBuilder(props) {
           ></input>
         </li>
         <li>
-          <button className="resume-submit" onClick={uploadButton}>
+          <button className="btn btn-success" onClick={uploadButton}>
             Upload
           </button>
-          <button className="resume-clear" onClick={resetForm}>
+          <button className="btn btn-danger" onClick={resetForm}>
             Clear
           </button>
         </li>
@@ -111,12 +111,44 @@ export default function ResumeBuilder(props) {
             <h3>or</h3>
           </div>
 
-          <h5>Upload Your CV</h5>
+          <h2>Upload Your Resume Here</h2>
+          <p class="lead">
+            <b></b>
+          </p>
+
+          <form id="file-upload-form" class="uploader">
+            <input
+              id="file-upload"
+              type="file"
+              name="fileUpload"
+              accept="image/*"
+            />
+
+            <label for="file-upload" id="file-drag">
+              <img id="file-image" src="#" alt="Preview" class="hidden"></img>
+              <div id="start">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <div>Select a file or drag here</div>
+                <div id="notimage" class="hidden">
+                  Please select an image
+                </div>
+                <span id="file-upload-btn" class="btn btn-primary">
+                  Select a file
+                </span>
+              </div>
+              <div id="response" class="hidden">
+                <div id="messages"></div>
+                <progress class="progress" id="file-progress" value="0">
+                  <span>0</span>%
+                </progress>
+              </div>
+            </label>
+          </form>
+          {/* <h5>Upload Your CV</h5>
           <form action="/action_page.pdf">
             <input type="file" id="myFile" name="filename"></input>
             <input type="submit" onClick={test}></input>
-          </form>
-          <embed src={noImage} width="800px" height="800px" />
+          </form> */}
         </div>
       </ul>
     </form>

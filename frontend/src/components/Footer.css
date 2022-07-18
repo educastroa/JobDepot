@@ -10,3 +10,19 @@
   cursor: pointer;
 }
 
+
+.social-icons {
+  display: flex;
+justify-content:space-around;
+margin-left: 600px;
+margin-right: 600px;
+margin-bottom: 10px;
+}
+
+.social-icon {
+display:flex;
+}
+
+/* #plan{
+  width:150px;
+ } */
