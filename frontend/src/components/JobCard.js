@@ -6,10 +6,9 @@ import { useAppContext } from "../hooks";
 import ShareJobPostModal from "./ShareJobPostModal";
 
 export default function JobCard({ job, id }) {
-  const [src, setSrc] = useState('');
+  const [src, setSrc] = useState("");
   const { user, setUser } = useAppContext();
   const [savedjob, setSavedJob] = useState(false);
-
 
   const handleError = () => {
     setSrc(noImage);
@@ -56,18 +55,11 @@ export default function JobCard({ job, id }) {
         <div className="card-body d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center overflow-hidden">
             <div className="me-4">
-
-              <img
-                src={src}
-                onError={handleError}
-                height="auto"
-                width="64" />
-
+              <img src={src} onError={handleError} height="auto" width="64" />
             </div>
 
             <div className="d-flex flex-wrap align-items-center overflow-hidden me-4">
-              <div className="w-100"
-              value={job.employer_name}>
+              <div className="w-100" value={job.employer_name}>
                 <b>Employer: </b>
                 {job.employer_name}
               </div>
@@ -78,7 +70,6 @@ export default function JobCard({ job, id }) {
               <div className="w-100">
                 <b>Date posted: </b>
                 {job.job_posted_at_datetime_utc != null
-
                   ? format(
                       new Date(job.job_posted_at_datetime_utc),
                       "MM/dd/yyyy - hh:mm aaa"
@@ -93,7 +84,6 @@ export default function JobCard({ job, id }) {
             </div>
           </div>
 
-
           <div className="d-flex align-content-end me-4">
             <div>
               <button
@@ -107,7 +97,19 @@ export default function JobCard({ job, id }) {
                 See More...
               </button>
             </div>
-            <ShareJobPostModal id={id} job={job} employerImgSrc={src}/>
+            <ShareJobPostModal id={id} job={job} employerImgSrc={src} />
+            <div className="button-2">
+              <button
+                type="button"
+                className="btn btn-light text-nowrap"
+                data-toggle={savedjob}
+                aria-pressed="false"
+                autocomplete="off"
+                onClick={savedjob ? removeSavedJob : addSavedJob}
+              >
+                {savedjob ? "Job Saved" : "Like"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -116,30 +118,6 @@ export default function JobCard({ job, id }) {
           <b>Job description:</b>
 
           {job.job_description}
-
-          <div className="button-2">
-            <button
-              type="button"
-              className="btn btn-light text-nowrap"
-              data-bs-toggle="collapse"
-              data-bs-target={`#jobs-${id}`}
-              aria-expanded="false"
-              aria-controls={`jobs-${id}`}
-            >
-              See More...
-            </button>
-
-            <button
-              type="button"
-              className="btn btn-light text-nowrap"
-              data-toggle={savedjob}
-              aria-pressed="false"
-              autocomplete="off"
-              onClick={savedjob ? removeSavedJob : addSavedJob}
-            >
-              {savedjob ? "Job Saved" : "Like"}
-            </button>
-          </div>
         </div>
         <div className="collapse" id={`jobs-${id}`}>
           <div className="card card-body">
@@ -147,7 +125,6 @@ export default function JobCard({ job, id }) {
 
             {job.job_description}
           </div>
-
         </div>
       </div>
     </div>

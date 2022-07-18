@@ -1,8 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-
-
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
@@ -22,18 +19,14 @@ module.exports = (db) => {
         job.employer_name,
         receiver,
         sender,
-
       ]
     )
-    .then((data) => {
+      .then((data) => {
+        return res.status(200).send();
+      })
+      .catch((err) => res.status(500).json({ error: err.message }));
+  });
 
-      return res.status(200).send()
-    })
-      .catch((err) =>res.status(500).json({ error: err.message }));;
-=======
-
-
-module.exports = (db) => {
   router.post("/saved", (req, res) => {
     console.log("blooper res", res);
     const employer_name = req.body.employer_name;
@@ -117,7 +110,6 @@ module.exports = (db) => {
         res.send(data.rows);
       })
       .catch((err) => console.log("error: ", err));
-
   });
 
   return router;

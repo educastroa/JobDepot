@@ -4,6 +4,8 @@ import "./ResumeBuilder.css";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../hooks";
 
+import noImage from "./img/no-image.png";
+
 export default function ResumeBuilder(props) {
   const navigate = useNavigate();
 
@@ -59,9 +61,13 @@ export default function ResumeBuilder(props) {
     setEducation("");
   };
 
+  const test = () => {
+    console.log("hello test");
+  };
+
   return (
     <form>
-      <ul className="flex-outer">
+      <ul className="flex-outer1">
         <li>
           <label for="full-name">Full Name</label>
           <input
@@ -74,7 +80,7 @@ export default function ResumeBuilder(props) {
           ></input>
         </li>
         <li>
-          <label for="contact-info">Contact Infomation</label>
+          <label for="contact-info">Contact Information</label>
           <input
             type="text"
             id="contact-info"
@@ -108,15 +114,14 @@ export default function ResumeBuilder(props) {
         </li>
         <li>
           <label for="education">Education</label>
-          <textarea
-            rows="6"
+          <input
+            type="education"
             id="education"
             placeholder="Enter your education here"
             className="education-input"
             value={education}
-            type="text"
             onChange={handleEducation}
-          ></textarea>
+          ></input>
         </li>
         <li>
           <button className="resume-submit" onClick={handleUpload}>
@@ -126,6 +131,18 @@ export default function ResumeBuilder(props) {
             Clear
           </button>
         </li>
+        <div className="upload-cv-file">
+          <div className="or">
+            <h3>or</h3>
+          </div>
+
+          <h5>Upload Your CV</h5>
+          <form action="/action_page.pdf">
+            <input type="file" id="myFile" name="filename"></input>
+            <input type="submit" onClick={test}></input>
+          </form>
+          <embed src={noImage} width="800px" height="800px" />
+        </div>
       </ul>
     </form>
   );
