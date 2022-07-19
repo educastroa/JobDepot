@@ -8,8 +8,8 @@ import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearch from "./components/SalarySearch";
 import LoginForm from "./components/Login";
 import ViewResume from "./components/ViewResume";
-import Messages from "./components/Messages";
 import SavedJob from "./components/SavedJobs";
+import MessageList from "./components/MessageList";
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 
@@ -37,10 +37,8 @@ function App() {
 
           <main className="overflow-auto" style={{ flex: 1 }}>
             <Routes>
-              <Route path="login" element={<LoginForm />} />
-              <Route path="register" element={<RegisterForm />} />
               <Route
-                path="/search"
+                index
                 element={
                   <RequireAuth>
                     <Header />
@@ -50,17 +48,7 @@ function App() {
                 }
               />
               <Route
-                path=""
-                element={
-                  <RequireAuth>
-                    <Header />
-
-                    <SearchJob />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/resume"
+                path="resumeBuild"
                 element={
                   <RequireAuth>
                     <Header />
@@ -72,7 +60,7 @@ function App() {
                 }
               />
               <Route
-                path="/resume/view"
+                path="resumeView"
                 element={
                   <RequireAuth>
                     <Header />
@@ -84,7 +72,7 @@ function App() {
                 }
               />
               <Route
-                path="/salary"
+                path="salary"
                 element={
                   <RequireAuth>
                     <Header />
@@ -96,7 +84,7 @@ function App() {
                 }
               />
               <Route
-                path="/saved"
+                path="saved"
                 element={
                   <RequireAuth>
                     <Header />
@@ -113,8 +101,18 @@ function App() {
                   <RequireAuth>
                     <Header />
                     <div className="scrollbar scrollbar-primary mx-auto">
-                      <Messages />
+                      <MessageList />
                     </div>
+                  </RequireAuth>
+                }
+              />
+              <Route path="login" element={<LoginForm />} />
+              <Route path="register" element={<RegisterForm />} />
+              <Route
+                path="*"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
                   </RequireAuth>
                 }
               />

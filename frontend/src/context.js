@@ -5,8 +5,6 @@ export const AppContext = createContext({
   setJobs: () => { },
   setUser: () => { },
   user: null,
-  messages: [],
-  setMessages: () => { },
 });
 
 export default function AppContextProvider({ children }) {
@@ -21,8 +19,6 @@ export default function AppContextProvider({ children }) {
       setJobs,
       setUser,
       user,
-      messages,
-      setMessages,
     }}>
       {children}
     </AppContext.Provider>

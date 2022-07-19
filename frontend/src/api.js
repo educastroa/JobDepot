@@ -18,6 +18,7 @@ export const uploadResume = (payload) => axios.post("api/resume", payload);
 
 export const getResume = () =>
   axios.get("/api/resume/view").then((res) => res.data);
+export const register = (payload) => axios.post("/api/users/register", payload);
 
 export const getSavedJobs = () =>
   axios.get("/api/jobs/saved").then((res) => res.data);

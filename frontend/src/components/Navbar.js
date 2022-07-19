@@ -1,10 +1,14 @@
 import React, { Fragment } from "react";
 import { sessionLogout } from "../api";
 import { useAppContext } from "../hooks";
+import { useNavigate } from "react-router-dom";
+import './Navbar.css';
 
 
 export default function Navbar() {
   const { user, setUser } = useAppContext();
+  const navigate = useNavigate();
+
 
   const onLogout = () => {
     setUser();
@@ -14,101 +18,84 @@ export default function Navbar() {
 
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-fixed-top">
+    <nav className="navbar navbar-expand-sm">
       <div className="container-fluid">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/saved">
-                Saved Jobs
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Search..
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="/search">
-                    Jobs
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/salary">
-                    Salaries
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Resume
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="/resume/view">
-                    View
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/resume">
-                    Upload
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/messages">
-                Messages
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="d-flex align-items-center justify-content-end">
-          {user != null && (
-            <Fragment>
-              Logged in as {user.first_name}
-              <button
-                className="btn btn-outline-success ms-2"
-                onClick={() => onLogout()}
-                type="button"
-              >
-                Logout
-              </button>
-            </Fragment>
-          )}
-        </div>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <a className="nav-link customNavbar-item" onClick={() => navigate("/saved", { replace: true })}>
+              Saved Jobs
+            </a>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Search..
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a className="dropdown-item customNavbar-item" onClick={() =>  navigate("/", { replace: true })}>
+                  Jobs
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item customNavbar-item" onClick={() =>  navigate("/salary", { replace: true })}>
+                  Salaries
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Resume
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a className="dropdown-item customNavbar-item" onClick={() => navigate("/resumeView", { replace: true })}>
+                  View
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item customNavbar-item" onClick={() => navigate("/resumeBuild", { replace: true })}>
+                  Build
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link customNavbar-item" onClick={() => navigate("/messages", { replace: true })}>
+              Messages
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="d-flex align-items-center justify-content-end">
+        {user != null && (
+          <Fragment>
+            Logged in as {user.first_name}
+            <button
+              className="btn btn-outline-success ms-2"
+              onClick={() => onLogout()}
+              type="button"
+            >
+              Logout
+            </button>
+          </Fragment>
+        )}
       </div>
     </nav>
   );
 }
+

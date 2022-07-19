@@ -91,6 +91,18 @@ export default function JobCard({ job, id }) {
               >
                 See More...
               </button>
+              <div className="button-2">
+                <button
+                  type="button"
+                  className="btn btn-light text-nowrap"
+                  data-toggle={savedjob}
+                  aria-pressed="false"
+                  autoComplete="off"
+                  onClick={savedjob ? removeSavedJob : addSavedJob}
+                >
+                  {savedjob ? "Job Saved" : "Like"}
+                </button>
+              </div>
             </div>
             <ShareJobPostModal id={id} job={job} employerImgSrc={src} />
             <div className="button-2">
