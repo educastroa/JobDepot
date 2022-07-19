@@ -34,16 +34,11 @@ function App() {
   return (
     <Fragment>
       {checked && (
-        <div className="d-flex flex-column vh-100">
-
-          
+        <div >
           <Weather />
-
           <Navbar />
-
           <main
-            className="d-flex flex-column overflow-auto"
-            style={{ flex: 1 }}
+            className="d-flex flex-column vh-100 overflow-auto" style={{ flex: 1 }}
           >
             <Routes>
               <Route
@@ -86,7 +81,7 @@ function App() {
                   <RequireAuth>
                     <Header />
 
-                    <div className="scrollbar scrollbar-primary mx-auto">
+                    <div>
                       <SalarySearch />
                     </div>
                   </RequireAuth>
@@ -127,8 +122,8 @@ function App() {
               />
             </Routes>
 
-            <Footer />
           </main>
+          <Footer />
         </div>
       )}
     </Fragment>
