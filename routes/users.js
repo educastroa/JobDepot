@@ -13,7 +13,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;
-        res.json({ users });
+        return res.status(200).send({ users });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
@@ -68,7 +68,7 @@ module.exports = (db) => {
             .send({ message: "Username not found in database" });
         }
 
-        return res.json({ ...user });
+        return res.status(200).send({ ...user });
       })
       .catch((err) => res.status(500).json({ error: err.message }));
   });

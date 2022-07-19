@@ -1,40 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { format } from 'date-fns';
+import React, { useState } from "react";
 import noImage from './img/no-image.png';
-import { useAppContext } from '../hooks';
-import { getMessages } from "../api";
-import { getUsers } from "../api";
 
-export default function Message({ message, id, users }) {
+export default function Message({ message, id }) {
   const [src, setSrc] = useState('');
-
-  const [sender, setSender] = useState()
 
   const handleError = () => {
     setSrc(noImage);
   };
 
-  const findSender = (usersArray, userId) => {
-    usersArray.forEach(user => {
-      if(user.id === userId)
-      setSender(`${user.first_name} ${user.last_name}`)
-
-    });
-  }
-
-  useEffect(() => {
-    setSrc(message.image ?? noImage)
-    findSender(users, message.sender_id)
-  }, []);
-
-
-
-
   return (
-    <div className="mx-auto mt-4" style={{ maxWidth: '800px' }}>
+    <div className="mx-auto mt-4" style={{ maxWidth: '1200px' }}>
       <div className="my-3">
       <div className="w-250">
-        <h6 className="text-start ">Message from: {`${sender}`} </h6>
+        <h6 className="text-start ">Message from: {`${message.sender_first_name} ${message.sender_last_name}`} </h6>
       </div>
         <div className="card">
           <div className="card-body d-flex justify-content-between align-items-center">

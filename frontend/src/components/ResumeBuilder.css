@@ -1,4 +1,8 @@
 
+```weather/widget
+.flex-outer li button {
+/////
+
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
@@ -27,11 +31,14 @@
 }
 
 .flex-outer1 li button {
+``` master
   margin-left: auto;
   padding: 8px 16px;
   border: none;
 }
+``` weather/widget
 
+/////
 .flex-inner li {
   width: 100px;
 }
@@ -61,6 +68,7 @@ max-width: 800px;
 margin: 0 auto;
 padding-bottom: 10em;
 }
+///// master
 
 .flex-outer1 li,
 .flex-inner {
@@ -69,10 +77,6 @@ flex-wrap: wrap;
 align-items: center;
 }
 
-.flex-inner {
-padding: 0 8px;
-justify-content: space-between;
-}
 
 .flex-outer1 > li:not(:last-child) {
 margin-bottom: 20px;
@@ -86,10 +90,16 @@ letter-spacing: .09em;
 text-transform: uppercase;
 }
 
+``` weather/widget
+.flex-outer > li > label,
+.flex-outer li p {
+flex: 1 0 1200px;
+/////
 .flex-outer1 > li > label,
 .flex-outer1 li p {
 flex: 1 0 120px;
 max-width: 220px;
+///// master
 }
 
 .flex-outer1 > li > label + *,
@@ -97,9 +107,12 @@ max-width: 220px;
 flex: 1 0 220px;
 }
 
+``` weather/widget
+/////
 .flex-outer1 li p {
 margin: 0;
 }
+``` master
 
 .flex-outer1 li input:not([type='checkbox']),
 .flex-outer1 li textarea {
@@ -108,6 +121,9 @@ border: solid ;
 }
 
 
+``` weather/widget
+
+/////
 .flex-inner li {
 width: 100px;
 }
@@ -258,3 +274,4 @@ p {
   border-color: #4D774E;
   cursor: pointer;
 }
+``` master

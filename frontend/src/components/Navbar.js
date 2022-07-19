@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
-import { sessionLogout } from "../api";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
+import { sessionLogout} from "../api";
 import { useAppContext } from "../hooks";
 import { useNavigate } from "react-router-dom";
 import './Navbar.css';
@@ -81,18 +82,22 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
-      <div className="d-flex align-items-center justify-content-end">
+      <div>
         {user != null && (
-          <Fragment>
-            Logged in as {user.first_name}
+          <div className="d-flex align-items-center ">
+            <div className="text-nowrap">
+            Welcome, {user.first_name}
+            </div>
+            <div>
             <button
-              className="btn btn-outline-success ms-2"
+              className="btn btn-outline-success ms-2 me-2"
               onClick={() => onLogout()}
               type="button"
             >
               Logout
             </button>
-          </Fragment>
+            </div>
+          </div>
         )}
       </div>
     </nav>

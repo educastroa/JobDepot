@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -12,6 +13,7 @@ import SavedJob from "./components/SavedJobs";
 import MessageList from "./components/MessageList";
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
+import Weather from "./components/Weather";
 
 import { getUser } from "./api";
 import { useAppContext } from "./hooks";
@@ -33,9 +35,16 @@ function App() {
     <Fragment>
       {checked && (
         <div className="d-flex flex-column vh-100">
+
+          
+          <Weather />
+
           <Navbar />
 
-          <main className="overflow-auto" style={{ flex: 1 }}>
+          <main
+            className="d-flex flex-column overflow-auto"
+            style={{ flex: 1 }}
+          >
             <Routes>
               <Route
                 index
@@ -117,9 +126,9 @@ function App() {
                 }
               />
             </Routes>
-          </main>
 
-          <Footer />
+            <Footer />
+          </main>
         </div>
       )}
     </Fragment>
