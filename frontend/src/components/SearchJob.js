@@ -85,7 +85,7 @@ export default function SearchJob() {
                   name="query"
                   ref={queryInputRef}
                   className="form-control me-4"
-                  placeholder="Search job posts"
+                  placeholder="🔍 Search job posts"
                   value={search.query}
                   onChange={handleChange}
                   required

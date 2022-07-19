@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -8,10 +9,11 @@ import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearch from "./components/SalarySearch";
 import LoginForm from "./components/Login";
 import ViewResume from "./components/ViewResume";
-import Messages from "./components/Messages";
-import SavedJobs from "./components/SavedJobs";
+import SavedJob from "./components/SavedJobs";
+import MessageList from "./components/MessageList";
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
+import Weather from "./components/Weather";
 
 import { getUser } from "./api";
 import { useAppContext } from "./hooks";
@@ -33,33 +35,33 @@ function App() {
     <Fragment>
       {checked && (
         <div className="d-flex flex-column vh-100">
-          <Header />
+
+          
+          <Weather />
+
           <Navbar />
 
-          <main className="overflow-auto" style={{ flex: 1 }}>
+          <main
+            className="d-flex flex-column overflow-auto"
+            style={{ flex: 1 }}
+          >
             <Routes>
-              <Route path="login" element={<LoginForm />} />
-              <Route path="register" element={<RegisterForm />} />
               <Route
-                path="/search"
+                index
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <SearchJob />
                   </RequireAuth>
                 }
               />
               <Route
-                path=""
+                path="resumeBuild"
                 element={
                   <RequireAuth>
-                    <SearchJob />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/resume"
-                element={
-                  <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ResumeBuilder />
                     </div>
@@ -67,9 +69,11 @@ function App() {
                 }
               />
               <Route
-                path="/resume/view"
+                path="resumeView"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ViewResume />
                     </div>
@@ -77,9 +81,11 @@ function App() {
                 }
               />
               <Route
-                path="/salary"
+                path="salary"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
                     </div>
@@ -87,11 +93,13 @@ function App() {
                 }
               />
               <Route
-                path="/saved"
+                path="saved"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary mx-auto">
-                      <SavedJobs />
+                      <SavedJob />
                     </div>
                   </RequireAuth>
                 }
@@ -100,16 +108,27 @@ function App() {
                 path="messages"
                 element={
                   <RequireAuth>
+                    <Header />
                     <div className="scrollbar scrollbar-primary mx-auto">
-                      <Messages />
+                      <MessageList />
                     </div>
                   </RequireAuth>
                 }
               />
+              <Route path="login" element={<LoginForm />} />
+              <Route path="register" element={<RegisterForm />} />
+              <Route
+                path="*"
+                element={
+                  <RequireAuth>
+                    <SearchJob />
+                  </RequireAuth>
+                }
+              />
             </Routes>
-          </main>
 
-          <Footer />
+            <Footer />
+          </main>
         </div>
       )}
     </Fragment>
