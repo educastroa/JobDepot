@@ -8,8 +8,8 @@ import ResumeBuilder from "./components/ResumeBuilder";
 import SalarySearch from "./components/SalarySearch";
 import LoginForm from "./components/Login";
 import ViewResume from "./components/ViewResume";
+import SavedJob from "./components/SavedJobs";
 import MessageList from "./components/MessageList";
-import SavedJobs from "./components/SavedJobs";
 import RegisterForm from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 
@@ -33,7 +33,6 @@ function App() {
     <Fragment>
       {checked && (
         <div className="d-flex flex-column vh-100">
-          <Header />
           <Navbar />
 
           <main className="overflow-auto" style={{ flex: 1 }}>
@@ -42,6 +41,8 @@ function App() {
                 index
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <SearchJob />
                   </RequireAuth>
                 }
@@ -50,6 +51,8 @@ function App() {
                 path="resumeBuild"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ResumeBuilder />
                     </div>
@@ -60,6 +63,8 @@ function App() {
                 path="resumeView"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ViewResume />
                     </div>
@@ -70,6 +75,8 @@ function App() {
                 path="salary"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <SalarySearch />
                     </div>
@@ -80,8 +87,10 @@ function App() {
                 path="saved"
                 element={
                   <RequireAuth>
+                    <Header />
+
                     <div className="scrollbar scrollbar-primary mx-auto">
-                      <SavedJobs />
+                      <SavedJob />
                     </div>
                   </RequireAuth>
                 }
@@ -90,6 +99,7 @@ function App() {
                 path="messages"
                 element={
                   <RequireAuth>
+                    <Header />
                     <div className="scrollbar scrollbar-primary mx-auto">
                       <MessageList />
                     </div>
