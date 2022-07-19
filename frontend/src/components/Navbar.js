@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { sessionLogout} from "../api";
+import { sessionLogout } from "../api";
 import { useAppContext } from "../hooks";
 import { useNavigate } from "react-router-dom";
-import './Navbar.css';
-
+import "./Navbar.css";
 
 export default function Navbar() {
   const { user, setUser } = useAppContext();
@@ -20,7 +19,10 @@ export default function Navbar() {
       <div className="container-fluid">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link customNavbar-item" onClick={() => navigate("/saved", { replace: true })}>
+            <a
+              className="nav-link customNavbar-item"
+              onClick={() => navigate("/saved", { replace: true })}
+            >
               Saved Jobs
             </a>
           </li>
@@ -37,12 +39,18 @@ export default function Navbar() {
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <a className="dropdown-item customNavbar-item" onClick={() =>  navigate("/", { replace: true })}>
+                <a
+                  className="dropdown-item customNavbar-item"
+                  onClick={() => navigate("/", { replace: true })}
+                >
                   Jobs
                 </a>
               </li>
               <li>
-                <a className="dropdown-item customNavbar-item" onClick={() =>  navigate("/salary", { replace: true })}>
+                <a
+                  className="dropdown-item customNavbar-item"
+                  onClick={() => navigate("/salary", { replace: true })}
+                >
                   Salaries
                 </a>
               </li>
@@ -61,19 +69,28 @@ export default function Navbar() {
             </a>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <a className="dropdown-item customNavbar-item" onClick={() => navigate("/resumeView", { replace: true })}>
+                <a
+                  className="dropdown-item customNavbar-item"
+                  onClick={() => navigate("/resumeView", { replace: true })}
+                >
                   View
                 </a>
               </li>
               <li>
-                <a className="dropdown-item customNavbar-item" onClick={() => navigate("/resumeBuild", { replace: true })}>
-                  Build
+                <a
+                  className="dropdown-item customNavbar-item"
+                  onClick={() => navigate("/resumeBuild", { replace: true })}
+                >
+                  Upload
                 </a>
               </li>
             </ul>
           </li>
           <li className="nav-item">
-            <a className="nav-link customNavbar-item" onClick={() => navigate("/messages", { replace: true })}>
+            <a
+              className="nav-link customNavbar-item"
+              onClick={() => navigate("/messages", { replace: true })}
+            >
               Messages
             </a>
           </li>
@@ -82,17 +99,15 @@ export default function Navbar() {
       <div>
         {user != null && (
           <div className="d-flex align-items-center ">
-            <div className="text-nowrap">
-            Welcome, {user.first_name}
-            </div>
+            <div className="text-nowrap">Welcome, {user.first_name}</div>
             <div>
-            <button
-              className="btn btn-outline-success ms-2 me-2"
-              onClick={() => onLogout()}
-              type="button"
-            >
-              Logout
-            </button>
+              <button
+                className="btn btn-outline-success ms-2 me-2"
+                onClick={() => onLogout()}
+                type="button"
+              >
+                Logout
+              </button>
             </div>
           </div>
         )}
@@ -100,4 +115,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

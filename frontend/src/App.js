@@ -34,11 +34,12 @@ function App() {
   return (
     <Fragment>
       {checked && (
-        <div >
+        <div>
           <Weather />
           <Navbar />
           <main
-            className="d-flex flex-column vh-100 overflow-auto" style={{ flex: 1 }}
+            className="d-flex flex-column vh-100 overflow-auto"
+            style={{ flex: 1 }}
           >
             <Routes>
               <Route
@@ -121,7 +122,6 @@ function App() {
                 }
               />
             </Routes>
-
           </main>
           <Footer />
         </div>
