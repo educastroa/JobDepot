@@ -1,17 +1,76 @@
+
+```weather/widget
 .flex-outer li button {
+/////
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.address {
+  display: flex;
+  width: 150%
+}
+
+.flex-outer1 li,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-outer1 > li > label,
+.flex-outer1 li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer1 > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer1 li button {
+``` master
   margin-left: auto;
   padding: 8px 16px;
   border: none;
-  background: #333;
-  color: #f2f2f2;
-  text-transform: uppercase;
-  letter-spacing: .09em;
-  border-radius: 2px;
+}
+``` weather/widget
+
+/////
+.flex-inner li {
+  width: 100px;
 }
 
+.flex-inner {
+  justify-content: space-between;
+}
 
+.container {
+width: 80%;
+max-width: 1200px;
+margin: 0 auto;
+}
 
-.flex-outer li,
+.container * {
+box-sizing: border-box;
+}
+
+.flex-outer1,
+.flex-inner {
+list-style-type: none;
+padding: 0;
+}
+
+.flex-outer1 {
+max-width: 800px;
+margin: 0 auto;
+padding-bottom: 10em;
+}
+///// master
+
+.flex-outer1 li,
 .flex-inner {
 display: flex;
 flex-wrap: wrap;
@@ -19,35 +78,200 @@ align-items: center;
 }
 
 
-.flex-outer > li:not(:last-child) {
+.flex-outer1 > li:not(:last-child) {
 margin-bottom: 20px;
 }
 
-.flex-outer li label,
-.flex-outer li p {
+.flex-outer1 li label,
+.flex-outer1 li p {
 padding: 8px;
 font-weight: 300;
 letter-spacing: .09em;
 text-transform: uppercase;
 }
 
+``` weather/widget
 .flex-outer > li > label,
 .flex-outer li p {
 flex: 1 0 1200px;
+/////
+.flex-outer1 > li > label,
+.flex-outer1 li p {
+flex: 1 0 120px;
+max-width: 220px;
+///// master
 }
 
-.flex-outer > li > label + *,
+.flex-outer1 > li > label + *,
 .flex-inner {
 flex: 1 0 220px;
 }
 
+``` weather/widget
+/////
+.flex-outer1 li p {
+margin: 0;
+}
+``` master
 
-
-.flex-outer li input:not([type='checkbox']),
-.flex-outer li textarea {
+.flex-outer1 li input:not([type='checkbox']),
+.flex-outer1 li textarea {
 padding: 15px;
 border: solid ;
 }
 
 
+``` weather/widget
 
+/////
+.flex-inner li {
+width: 100px;
+}
+
+.upload-cv-file {
+  display: flex;
+align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 20px;
+
+}
+
+.resume-clear {
+  display: flex;
+}
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  color: black;
+  margin-bottom: 0;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: #4D774E;
+}
+
+.uploader {
+  display: block;
+  clear: both;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+.uploader label {
+  float: left;
+  clear: both;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 7px;
+  border: 3px solid #eee;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.uploader label:hover {
+  border-color: #4D774E;
+}
+.uploader label.hover {
+  border: 3px solid #4D774E;
+  box-shadow: inset 0 0 0 6px #eee;
+}
+.uploader label.hover #start i.fa {
+  transform: scale(0.8);
+  opacity: 0.3;
+}
+.uploader #start {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+.uploader #response {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+.uploader #response.hidden {
+  display: none;
+}
+
+.uploader #file-image {
+  display: inline;
+  margin: 0 auto 0.5rem auto;
+  width: auto;
+  height: auto;
+  max-width: 180px;
+}
+.uploader #file-image.hidden {
+  display: none;
+}
+.uploader #notimage {
+  display: block;
+  float: left;
+  clear: both;
+  width: 100%;
+}
+.uploader #notimage.hidden {
+  display: none;
+}
+.uploader progress,
+.uploader .progress {
+  display: inline;
+  clear: both;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 180px;
+  height: 8px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #eee;
+  overflow: hidden;
+}
+.uploader .progress[value]::-webkit-progress-bar {
+  border-radius: 4px;
+  background-color: #eee;
+}
+.uploader .progress[value]::-webkit-progress-value {
+  background: linear-gradient(to right, #393f90 0%, #454cad 50%);
+  border-radius: 4px;
+}
+.uploader .progress[value]::-moz-progress-bar {
+  background: linear-gradient(to right, #393f90 0%, #454cad 50%);
+  border-radius: 4px;
+}
+.uploader input[type=file] {
+  display: none;
+}
+.uploader div {
+  margin: 0 0 0.5rem 0;
+  color: #4D774E;
+}
+.uploader .btn {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+  clear: both;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: initial;
+  border: none;
+  border-radius: 0.2rem;
+  outline: none;
+  padding: 0 1rem;
+  height: 36px;
+  line-height: 36px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  background: #4D774E;
+  border-color: #4D774E;
+  cursor: pointer;
+}
+``` master

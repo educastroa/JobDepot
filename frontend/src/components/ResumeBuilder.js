@@ -1,87 +1,76 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { uploadResume } from "../api";
 import "./ResumeBuilder.css";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../hooks";
+
+import noImage from "./img/no-image.png";
 
 export default function ResumeBuilder(props) {
   const navigate = useNavigate();
 
   const { user, setUser } = useAppContext();
 
-  const [full_name, setFullName] = useState("");
-  const [contact_information, setContactInfo] = useState("");
-  const [skills, setSkills] = useState("");
-  const [work_experience, setWorkExperience] = useState("");
-  const [education, setEducation] = useState("");
+  const [inputs, setInputs] = useState({});
 
-  const handleFullName = (e) => {
-    setFullName(e.target.value);
+  const handleChange = (event) => {
+    const name = event.target.id;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleContactInformation = (e) => {
-    setContactInfo(e.target.value);
-  };
-
-  const handleSkills = (e) => {
-    setSkills(e.target.value);
-  };
-
-  const handleWorkExperience = (e) => {
-    setWorkExperience(e.target.value);
-  };
-
-  const handleEducation = (e) => {
-    setEducation(e.target.value);
-  };
-
-  const handleUpload = (e) => {
-    e.preventDefault();
-    console.log("MOOP", full_name);
-    axios
-      .post("/api/resume", {
-        full_name: full_name,
-        contact_information: contact_information,
-        skills: skills,
-        work_experience: work_experience,
-        education: education,
-        user: user.id,
-      })
-      .then((res) => {});
+  const uploadButton = () => {
+    uploadResume({
+      full_name: inputs.full_name,
+      contact_information: inputs.contact_information,
+      skills: inputs.skills,
+      work_experience: inputs.work_experience,
+      education: inputs.education,
+      user: user.id,
+    });
     navigate("/resume/view");
   };
 
   const resetForm = () => {
-    setFullName("");
-    setContactInfo("");
-    setSkills("");
-    setWorkExperience("");
-    setEducation("");
+    setInputs({
+      full_name: "",
+      contact_information: "",
+      skills: "",
+      work_experience: "",
+      education: "",
+    });
+  };
+
+  const test = () => {
+    console.log("hello test");
   };
 
   return (
     <form>
-      <ul className="flex-outer" >
+
+
+      <ul className="flex-outer1">
+
         <li>
           <label htmlFor="full-name">Full Name</label>
           <input
-            type="text"
-            id="full-name"
+            type="full_name"
+            id="full_name"
             placeholder="Enter your name here"
-            className="form-control"
-            value={full_name}
-            onChange={handleFullName}
+
+            className="full-name-input"
+            onChange={handleChange}
+
           ></input>
         </li>
         <li>
           <label htmlFor="contact-info">Contact Infomation</label>
           <input
-            type="text"
-            id="contact-info"
+            type="contact_information"
+            id="contact_information"
             placeholder="Contact information here"
             className="contact-info-input"
-            value={contact_information}
-            onChange={handleContactInformation}
+            onChange={handleChange}
           ></input>
         </li>
         <li>
@@ -91,19 +80,17 @@ export default function ResumeBuilder(props) {
             id="skills"
             placeholder="Enter your skills here"
             className="skills-input"
-            value={skills}
-            onChange={handleSkills}
+            onChange={handleChange}
           ></input>
         </li>
         <li>
           <label htmlFor="work-experience">Previous Work Experience</label>
           <input
-            type="work-experience"
-            id="work-experience"
+            type="work_experience"
+            id="work_experience"
             placeholder="Enter your previous work experience here"
             className="work-experience-input"
-            value={work_experience}
-            onChange={handleWorkExperience}
+            onChange={handleChange}
           ></input>
         </li>
         <li>
@@ -113,19 +100,56 @@ export default function ResumeBuilder(props) {
             id="education"
             placeholder="Enter your education here"
             className="education-input"
-            value={education}
-            type="text"
-            onChange={handleEducation}
-          ></textarea>
+            onChange={handleChange}
+          ></input>
         </li>
         <li>
-          <button className="resume-submit" onClick={handleUpload}>
+          <button className="btn btn-success" onClick={uploadButton}>
             Upload
           </button>
-          <button className="resume-clear" onClick={resetForm}>
+          <button className="btn btn-danger" onClick={resetForm}>
             Clear
           </button>
         </li>
+        <div className="upload-cv-file">
+          <div className="or">
+            <h3>or</h3>
+          </div>
+
+          <h2>Upload Your Resume Here</h2>
+          <p class="lead">
+            <b></b>
+          </p>
+
+          <form id="file-upload-form" class="uploader">
+            <input
+              id="file-upload"
+              type="file"
+              name="fileUpload"
+              accept="image/*"
+            />
+
+            <label for="file-upload" id="file-drag">
+              <img id="file-image" src="#" alt="Preview" class="hidden"></img>
+              <div id="start">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <div>Select a file or drag here</div>
+                <div id="notimage" class="hidden">
+                  Please select an image
+                </div>
+                <span id="file-upload-btn" class="btn btn-primary">
+                  Select a file
+                </span>
+              </div>
+              <div id="response" class="hidden">
+                <div id="messages"></div>
+                <progress class="progress" id="file-progress" value="0">
+                  <span>0</span>%
+                </progress>
+              </div>
+            </label>
+          </form>
+        </div>
       </ul>
     </form>
   );
