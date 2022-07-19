@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
-import { sessionLogout } from "../api";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
+import { sessionLogout} from "../api";
 import { useAppContext } from "../hooks";
 import { useNavigate } from "react-router-dom";
 import './Navbar.css';

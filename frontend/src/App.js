@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -35,11 +36,13 @@ function App() {
       {checked && (
         <div className="d-flex flex-column vh-100">
           <Header />
-          <Navbar />
           <Weather />
+          <Navbar />
 
-
-          <main className="d-flex flex-column overflow-auto" style={{ flex: 1 }}>
+          <main
+            className="d-flex flex-column overflow-auto"
+            style={{ flex: 1 }}
+          >
             <Routes>
               <Route
                 index
@@ -112,10 +115,7 @@ function App() {
             </Routes>
 
             <Footer />
-
           </main>
-
-
         </div>
       )}
     </Fragment>
