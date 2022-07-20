@@ -15,9 +15,7 @@ export default function JobCard({ job, id }) {
     setSrc(noImage);
   };
 
-  useEffect(() => {
-    setSrc(job.employer_logo ?? noImage);
-  }, []);
+
 
   const addSavedJobButton = () => {
     addSavedJob({
@@ -28,12 +26,18 @@ export default function JobCard({ job, id }) {
       job_description: job.job_description,
       unique_job_id: job.job_id,
       user: user.id,
+      image: job.employer_logo
     });
     console.log("ADDED");
     setSavedJob(true);
   };
 
   console.log("bloop", job.job_id);
+
+
+  useEffect(() => {
+    setSrc(job.employer_logo ?? noImage);
+  }, []);
 
   const removeSavedJobButton = () => {
     console.log("meep", job.job_id);
