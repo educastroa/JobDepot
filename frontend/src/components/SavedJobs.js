@@ -14,6 +14,7 @@ export default function SavedJob({}) {
       .catch((err) => console.log("Error found here:", err));
   };
 
+
   useEffect(() => {
     fetchSavedJobs();
   }, []);
@@ -22,7 +23,7 @@ export default function SavedJob({}) {
 
     <div className="h-100 overflow-hidden">
       <div className="d-flex flex-column h-100">
-        <div className="mx-auto w-25">
+        <div className="mx-auto w-100">
           <h2 className="text-center py-4">Your Saved Jobs</h2>
         </div>
         <div className="resume-view-list">
@@ -35,7 +36,7 @@ export default function SavedJob({}) {
               {savedjobs.map(
                 (savedjob, i) =>
                   savedjob != null && (
-                    <SavedJobsList key={i} savedjob={savedjob} id={i} />
+                    <SavedJobsList key={i} fetchSavedJobs={fetchSavedJobs} savedjob={savedjob} id={i} />
                   )
               )}
             </ul>

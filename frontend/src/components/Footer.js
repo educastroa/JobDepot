@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container">
         <div className="row align-items-start">
           <div className="col text-center pt-3">
-            <h4>Job Search</h4>
+            <h4>JobDepot</h4>
             <ul className="list-unstyled">
               <li>123-345-6789</li>
               <li>Burlington, Ontario</li>
@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="d-flex justify-content-center pb-3">
-        &copy;{new Date().getFullYear()} Job Search | All rights reserved |
+        &copy;{new Date().getFullYear()} JobDepot | All rights reserved |
         Terms Of Service | Privacy
       </div>
     </footer>

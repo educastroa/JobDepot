@@ -45,7 +45,7 @@ export default function LoginForm() {
                       <div className="card-body p-md-5 mx-md-4">
                         <div className="text-center">
                           <h4 className="mt-1 mb-5 pb-1">
-                            Welcome to Job Search!
+                            Welcome to JobDepot!
                           </h4>
                         </div>
 
@@ -116,8 +116,8 @@ export default function LoginForm() {
                           We are more than just a company
                         </h4>
                         <p className="small mb-0">
-                          JobSearch is the #1 job site in the world with over
-                          250M unique visitors every month. JobSearch strives to
+                          JobDepot is the #1 job site in the world with over
+                          250M unique visitors every month. JobDepot strives to
                           put job seekers first, giving them free access to
                           search for jobs, post resumes, and research companies.
                           Every day, we connect millions of people to new
