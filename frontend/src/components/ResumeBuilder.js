@@ -27,8 +27,9 @@ export default function ResumeBuilder(props) {
       work_experience: inputs.work_experience,
       education: inputs.education,
       user: user.id,
-    });
-    navigate("/resume/view");
+
+    }).then(() => {});
+    navigate("/resumeView");
   };
 
   const resetForm = () => {
@@ -46,65 +47,81 @@ export default function ResumeBuilder(props) {
   };
 
   return (
-    <form>
 
-
-      <ul className="flex-outer1">
-
-        <li>
-          <label htmlFor="full-name">Full Name</label>
+    <form className="resumebuildupload">
+      <ul className="contact__right">
+        <li className="line-item">
+          <label htmlFor="full-name" className="contact__form-label">
+            Full Name
+          </label>
           <input
             type="full_name"
             id="full_name"
             placeholder="Enter your name here"
-
-            className="full-name-input"
+            class="contact__form-input"
+            size="50"
             onChange={handleChange}
 
           ></input>
         </li>
-        <li>
-          <label htmlFor="contact-info">Contact Infomation</label>
-          <input
+
+        <li className="line-item">
+          <label htmlFor="contact-info" className="contact__form-label">
+            Contact Information
+          </label>
+          <textarea
             type="contact_information"
             id="contact_information"
             placeholder="Contact information here"
-            className="contact-info-input"
+            class="contact__form-textarea"
+            size="50"
             onChange={handleChange}
-          ></input>
+          ></textarea>
         </li>
-        <li>
-          <label htmlFor="Skills">Skills</label>
-          <input
+        <li className="line-item">
+          <label htmlFor="Skills" className="contact__form-label">
+            Skills
+          </label>
+          <textarea
             type="skills"
             id="skills"
+            rows="6"
             placeholder="Enter your skills here"
-            className="skills-input"
+            className="contact__form-textarea"
+            size="10"
             onChange={handleChange}
-          ></input>
+          ></textarea>
         </li>
-        <li>
-          <label htmlFor="work-experience">Previous Work Experience</label>
-          <input
+        <li className="line-item">
+          <label htmlFor="work-experience" className="contact__form-label">
+            Work Experience
+          </label>
+          <textarea
             type="work_experience"
             id="work_experience"
             placeholder="Enter your previous work experience here"
-            className="work-experience-input"
-            onChange={handleChange}
-          ></input>
-        </li>
-        <li>
-          <label htmlFor="education">Education</label>
-          <input
+            className="contact__form-textarea"
             rows="6"
-            id="education"
-            placeholder="Enter your education here"
-            className="education-input"
+            size="10"
             onChange={handleChange}
-          ></input>
+          ></textarea>
         </li>
-        <li>
-          <button className="btn btn-success" onClick={uploadButton}>
+        <li className="line-item">
+          <label htmlFor="education" className="contact__form-label">
+            Education
+          </label>
+          <textarea
+            type="education"
+            id="education"
+            className="contact__form-textarea"
+            placeholder="Enter your education here"
+            rows="6"
+            size="10"
+            onChange={handleChange}
+          ></textarea>
+        </li>
+        <li className="buttons2">
+          <button className="btn btn-success upload" onClick={uploadButton}>
             Upload
           </button>
           <button className="btn btn-danger" onClick={resetForm}>
@@ -115,12 +132,10 @@ export default function ResumeBuilder(props) {
           <div className="or">
             <h3>or</h3>
           </div>
-
-          <h2>Upload Your Resume Here</h2>
-          <p className="lead">
-            <b></b>
-          </p>
-
+     <div className="upload-cv-file">
+        <p class="lead">
+          <b></b>
+        </p>
           <form id="file-upload-form" className="uploader">
             <input
               id="file-upload"
