@@ -9,7 +9,7 @@ export default function Message({ message, id }) {
   };
 
   return (
-    <div className="mx-auto mt-4" style={{ maxWidth: '1200px' }}>
+    <div className="mx-auto mt-4" style={{ maxWidth: '800px' }}>
       <div className="my-3">
       <div className="w-250">
         <h6 className="text-start ">Message from: {`${message.sender_first_name} ${message.sender_last_name}`} </h6>

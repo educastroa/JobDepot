@@ -7,7 +7,7 @@ export const getUser = () => axios.get("/api/users/me");
 
 export const getUsers = () => axios.get("/api/users").then((res) => res.data);
 
-export const shareJob = (payload) => axios.post("/api/jobs", payload);
+export const shareJob = (payload) => axios.post("/api/jobs/shared", payload);
 
 export const sessionLogout = () => axios.post("/api/users/logout");
 
