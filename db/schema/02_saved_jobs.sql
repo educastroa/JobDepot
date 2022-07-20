@@ -8,5 +8,6 @@ CREATE TABLE saved_jobs (
   job_apply_link VARCHAR(255) NOT NULL,
   job_description VARCHAR(10000) NOT NULL,
   unique_job_id VARCHAR(255) NOT NULL,
-  user_id INTEGER REFERENCES users(id)
+  user_id INTEGER REFERENCES users(id),
+  image TEXT
 )

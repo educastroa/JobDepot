@@ -37,6 +37,7 @@ module.exports = (db) => {
    * description: saves a job to the user's saved jobs
    */
   router.post("/saved", (req, res) => {
+    console.log('test', req.body);
     const {
       employer_name,
       job_title,
@@ -44,7 +45,8 @@ module.exports = (db) => {
       job_apply_link,
       job_description,
       unique_job_id,
-      user_id,
+      user,
+      image
     } = req.body;
 
     db.query(
@@ -55,8 +57,9 @@ module.exports = (db) => {
             job_posted_at_datetime_utc,
             job_apply_link,
             job_description,unique_job_id,
-            user_id)
-          VALUES ($1, $2, $3, $4, $5, $6, $7);
+            user_id,
+            image)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
         `,
       [
         employer_name,
@@ -65,7 +68,8 @@ module.exports = (db) => {
         job_apply_link,
         job_description,
         unique_job_id,
-        user_id,
+        user,
+        image
       ]
     )
     .then((data) => {
@@ -110,11 +114,13 @@ module.exports = (db) => {
 
 
   router.get("/saved", (req, res) => {
+    const user_id = req.session.user_id;
     db.query(
       `
       SELECT *
       FROM saved_jobs
-    `
+      WHERE user_id = $1
+    `, [user_id]
     )
       .then((data) => {
         res.send(data.rows);

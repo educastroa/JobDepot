@@ -2,13 +2,25 @@ import React, { useState, useEffect, Fragment } from "react";
 import "./SavedJobs.css";
 import { format } from "date-fns";
 import { getSavedJobs, removeSavedJobs } from "../api";
+import noImage from './img/no-image.png';
 
 export default function SavedJobsList({ fetchSavedJobs, savedjob, id }) {
+  const [src, setSrc] = useState('');
+
 
   const deleteSavedJobs = (jobid) => {
     removeSavedJobs(jobid).then(() => {});
     fetchSavedJobs()
   };
+
+  const handleError = () => {
+    setSrc(noImage);
+  };
+
+  useEffect(() => {
+    setSrc(savedjob.image ?? noImage);
+  }, []);
+
 
   return (
     <Fragment>
@@ -16,6 +28,13 @@ export default function SavedJobsList({ fetchSavedJobs, savedjob, id }) {
         <div className="card">
           <div className="card-body d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center overflow-hidden">
+            <div className="me-4">
+                <img
+                  src={src}
+                  onError={handleError}
+                  height="auto"
+                  width="64" />
+              </div>
               <div className="d-flex flex-wrap align-items-center overflow-hidden me-4">
                 <div className="w-100">
                   <b>Employer: </b>

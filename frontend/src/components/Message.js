@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import noImage from './img/no-image.png';
 
 export default function Message({ message, id }) {
   const [src, setSrc] = useState('');
 
+
+
   const handleError = () => {
     setSrc(noImage);
   };
+
+  useEffect(() => {
+    setSrc(message.image ?? noImage);
+  }, [])
+
 
   return (
     <div className="mx-auto mt-4" style={{ maxWidth: '800px' }}>

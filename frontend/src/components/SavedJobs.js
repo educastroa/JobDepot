@@ -30,7 +30,7 @@ export default function SavedJob({}) {
           <div
             id="scrollableDiv"
             className="mx-auto w-100 mt-5 mb-2 overflow-auto"
-            style={{ flex: 1, maxWidth: "1200px" }}
+            style={{ flex: 1, maxWidth: "800px" }}
           >
             <ul className="saved-jobs-list">
               {savedjobs.map(
