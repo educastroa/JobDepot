@@ -14,7 +14,7 @@ export const sessionLogout = () => axios.post("/api/users/logout");
 export const getMessages = () =>
   axios.get("/api/messages").then((res) => res.data);
 
-export const uploadResume = (payload) => axios.post("api/resume", payload);
+export const uploadResume = (payload) => axios.post("/api/resume", payload);
 
 export const getResume = () =>
   axios.get("/api/resume/view").then((res) => res.data);

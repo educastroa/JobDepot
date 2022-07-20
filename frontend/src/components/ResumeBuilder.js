@@ -27,9 +27,8 @@ export default function ResumeBuilder(props) {
       work_experience: inputs.work_experience,
       education: inputs.education,
       user: user.id,
-    }).then(() => {
-      navigate("/resume/view");
     });
+    navigate("/resume/view");
   };
 
   const resetForm = () => {
@@ -47,19 +46,24 @@ export default function ResumeBuilder(props) {
   };
 
   return (
-    <form className="resumebuildupload">
+    <form>
+
+
       <ul className="flex-outer1">
-        <li className="line-item">
+
+        <li>
           <label htmlFor="full-name">Full Name</label>
           <input
             type="full_name"
             id="full_name"
             placeholder="Enter your name here"
+
             className="full-name-input"
             onChange={handleChange}
+
           ></input>
         </li>
-        <li className="line-item">
+        <li>
           <label htmlFor="contact-info">Contact Infomation</label>
           <input
             type="contact_information"
@@ -69,7 +73,7 @@ export default function ResumeBuilder(props) {
             onChange={handleChange}
           ></input>
         </li>
-        <li className="line-item">
+        <li>
           <label htmlFor="Skills">Skills</label>
           <input
             type="skills"
@@ -79,8 +83,8 @@ export default function ResumeBuilder(props) {
             onChange={handleChange}
           ></input>
         </li>
-        <li className="line-item">
-          <label htmlFor="work-experience">Work Experience</label>
+        <li>
+          <label htmlFor="work-experience">Previous Work Experience</label>
           <input
             type="work_experience"
             id="work_experience"
@@ -89,7 +93,7 @@ export default function ResumeBuilder(props) {
             onChange={handleChange}
           ></input>
         </li>
-        <li className="line-item">
+        <li>
           <label htmlFor="education">Education</label>
           <input
             rows="6"
@@ -107,43 +111,46 @@ export default function ResumeBuilder(props) {
             Clear
           </button>
         </li>
-      </ul>
+        <div className="upload-cv-file">
+          <div className="or">
+            <h3>or</h3>
+          </div>
 
-      <div className="upload-cv-file">
-        <h2>Upload Your Resume Here</h2>
-        <p class="lead">
-          <b></b>
-        </p>
+          <h2>Upload Your Resume Here</h2>
+          <p className="lead">
+            <b></b>
+          </p>
 
-        <form id="file-upload-form" class="uploader">
-          <input
-            id="file-upload"
-            type="file"
-            name="fileUpload"
-            accept="image/*"
-          />
+          <form id="file-upload-form" className="uploader">
+            <input
+              id="file-upload"
+              type="file"
+              name="fileUpload"
+              accept="image/*"
+            />
 
-          <label for="file-upload" id="file-drag">
-            <img id="file-image" src="#" alt="Preview" class="hidden"></img>
-            <div id="start">
-              <i class="fa fa-download" aria-hidden="true"></i>
-              <div>Select a file or drag here</div>
-              <div id="notimage" class="hidden">
-                Please select an image
+            <label htmlFor="file-upload" id="file-drag">
+              <img id="file-image" src="#" alt="Preview" className="hidden"></img>
+              <div id="start">
+                <i className="fa fa-download" aria-hidden="true"></i>
+                <div>Select a file or drag here</div>
+                <div id="notimage" className="hidden">
+                  Please select an image
+                </div>
+                <span id="file-upload-btn" className="btn btn-primary">
+                  Select a file
+                </span>
               </div>
-              <span id="file-upload-btn" class="btn btn-primary">
-                Select a file
-              </span>
-            </div>
-            <div id="response" class="hidden">
-              <div id="messages"></div>
-              <progress class="progress" id="file-progress" value="0">
-                <span>0</span>%
-              </progress>
-            </div>
-          </label>
-        </form>
-      </div>
+              <div id="response" className="hidden">
+                <div id="messages"></div>
+                <progress className="progress" id="file-progress" value="0">
+                  <span>0</span>%
+                </progress>
+              </div>
+            </label>
+          </form>
+        </div>
+      </ul>
     </form>
   );
 }

@@ -4,6 +4,7 @@ import noImage from "./img/no-image.png";
 import { useAppContext } from "../hooks";
 import ShareJobPostModal from "./ShareJobPostModal";
 import { addSavedJob, removeSavedJob } from "../api";
+import { Heart, HeartFill } from 'react-bootstrap-icons';
 
 export default function JobCard({ job, id }) {
   const [src, setSrc] = useState("");
@@ -102,7 +103,7 @@ export default function JobCard({ job, id }) {
                 autocomplete="off"
                 onClick={savedjob ? removeSavedJobButton : addSavedJobButton}
               >
-                {savedjob ? "Job Saved" : "Like"}
+                {savedjob ? <HeartFill color="pink" /> : <Heart color="pink" />}
               </button>
             </div>
           </div>

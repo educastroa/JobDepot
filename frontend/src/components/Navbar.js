@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 
 
+
 export default function Navbar() {
   const { user, setUser } = useAppContext();
   const navigate = useNavigate();
+  const { jobs, setJobs } = useAppContext();
 
   const onLogout = () => {
     setUser();
+    setJobs([]);
     sessionLogout();
   };
 

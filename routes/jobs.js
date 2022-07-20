@@ -68,9 +68,9 @@ module.exports = (db) => {
         user_id,
       ]
     )
-      .then((res) => {
-        res.send(200);
-      })
+    .then((data) => {
+      return res.status(200).send();
+    })
       .catch((err) => console.log("error", err));
   });
 
@@ -86,9 +86,9 @@ module.exports = (db) => {
         `,
       [jobid]
     )
-      .then(() => {
-        console.log("delete complete");
-      })
+    .then((data) => {
+      return res.status(200).send();
+    })
       .catch((err) => console.log("error", err));
   });
 

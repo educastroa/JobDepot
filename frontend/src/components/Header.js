@@ -5,7 +5,7 @@ import "./Header.css";
 export default function Header() {
   return (
     <header className="custom-header d-flex justify-content-center align-items-center">
-      <h1 className="custom-header-title">JobSearch</h1>
+      <h1 className="custom-header-title">JobDepot</h1>
     </header>
   );
 }

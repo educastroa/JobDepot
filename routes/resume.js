@@ -28,8 +28,8 @@ module.exports = (db) => {
         user_id,
       ]
     )
-      .then((res) => {
-        res.send(200);
+      .then((data) => {
+        res.status(200).send();
       })
       .catch((err) => console.log("error", err));
   });

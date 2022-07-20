@@ -3,11 +3,13 @@ import "./SavedJobs.css";
 import { format } from "date-fns";
 import { getSavedJobs, removeSavedJobs } from "../api";
 
-export default function SavedJobsList({ savedjob, id }) {
+export default function SavedJobsList({ fetchSavedJobs, savedjob, id }) {
+
   const deleteSavedJobs = (jobid) => {
     removeSavedJobs(jobid).then(() => {});
-    window.location.reload();
+    fetchSavedJobs()
   };
+
   return (
     <Fragment>
       <div className="my-3">
@@ -55,7 +57,7 @@ export default function SavedJobsList({ savedjob, id }) {
               <div className="space"></div>
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => deleteSavedJobs(savedjob.id)}
               >
                 Remove
