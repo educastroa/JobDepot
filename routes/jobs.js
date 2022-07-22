@@ -37,7 +37,6 @@ module.exports = (db) => {
    * description: saves a job to the user's saved jobs
    */
   router.post("/saved", (req, res) => {
-    console.log('test', req.body);
     const {
       employer_name,
       job_title,
@@ -46,7 +45,7 @@ module.exports = (db) => {
       job_description,
       unique_job_id,
       user,
-      image
+      image,
     } = req.body;
 
     db.query(
@@ -69,12 +68,12 @@ module.exports = (db) => {
         job_description,
         unique_job_id,
         user,
-        image
+        image,
       ]
     )
-    .then((data) => {
-      return res.status(200).send();
-    })
+      .then((data) => {
+        return res.status(200).send();
+      })
       .catch((err) => console.log("error", err));
   });
 
@@ -90,14 +89,13 @@ module.exports = (db) => {
         `,
       [jobid]
     )
-    .then((data) => {
-      return res.status(200).send();
-    })
+      .then((data) => {
+        return res.status(200).send();
+      })
       .catch((err) => console.log("error", err));
   });
 
   router.post("/delete/:unique_job_id", (req, res) => {
-    console.log("delete req params plinky:", req.params.unique_job_id);
     const unique_job_id = req.params.unique_job_id;
     db.query(
       `
@@ -112,7 +110,6 @@ module.exports = (db) => {
       .catch((err) => console.log("error", err));
   });
 
-
   router.get("/saved", (req, res) => {
     const user_id = req.session.user_id;
     db.query(
@@ -120,7 +117,8 @@ module.exports = (db) => {
       SELECT *
       FROM saved_jobs
       WHERE user_id = $1
-    `, [user_id]
+    `,
+      [user_id]
     )
       .then((data) => {
         res.send(data.rows);

@@ -4,7 +4,7 @@ import noImage from "./img/no-image.png";
 import { useAppContext } from "../hooks";
 import ShareJobPostModal from "./ShareJobPostModal";
 import { addSavedJob, removeSavedJob } from "../api";
-import { Heart, HeartFill } from 'react-bootstrap-icons';
+import { Heart, HeartFill } from "react-bootstrap-icons";
 
 export default function JobCard({ job, id }) {
   const [src, setSrc] = useState("");
@@ -15,8 +15,6 @@ export default function JobCard({ job, id }) {
     setSrc(noImage);
   };
 
-
-
   const addSavedJobButton = () => {
     addSavedJob({
       employer_name: job.employer_name,
@@ -26,25 +24,18 @@ export default function JobCard({ job, id }) {
       job_description: job.job_description,
       unique_job_id: job.job_id,
       user: user.id,
-      image: job.employer_logo
+      image: job.employer_logo,
     });
-    console.log("ADDED");
     setSavedJob(true);
   };
-
-  console.log("bloop", job.job_id);
-
 
   useEffect(() => {
     setSrc(job.employer_logo ?? noImage);
   }, []);
 
   const removeSavedJobButton = () => {
-    console.log("meep", job.job_id);
     removeSavedJob(job.job_id)
-      .then(() => {
-        console.log("moop");
-      })
+      .then(() => {})
       .catch((err) => console.log("Error found here:", err));
     setSavedJob(false);
   };

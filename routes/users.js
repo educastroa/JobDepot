@@ -23,7 +23,6 @@ module.exports = (db) => {
   router.post("/login", (req, res) => {
     const { email, password } = req.body;
     const queryString = `SELECT * FROM users WHERE email = $1;`;
-    console.log(req.body);
     db.query(queryString, [email])
       .then((data) => {
         const user = data.rows[0];
@@ -43,7 +42,6 @@ module.exports = (db) => {
         }
 
         req.session.user_id = user.id;
-        console.log("test5", user.id);
         return res.status(200).send({ ...user });
       })
       .catch((err) => {
@@ -84,8 +82,6 @@ module.exports = (db) => {
     const email = req.body.email;
     const password = req.body.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
-
-    console.log("MEEP req body", first_name);
 
     db.query(
       `
