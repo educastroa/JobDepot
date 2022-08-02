@@ -83,7 +83,6 @@ module.exports = (db) => {
     const password = req.body.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
-
     db.query(
       `
           INSERT INTO users

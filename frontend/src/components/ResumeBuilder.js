@@ -41,10 +41,6 @@ export default function ResumeBuilder(props) {
     });
   };
 
-  const test = () => {
-    console.log("hello test");
-  };
-
   return (
 
     <form className="resumebuildupload">

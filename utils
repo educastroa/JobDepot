@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
 module.exports = (db) => {
   /************************/
@@ -33,6 +34,25 @@ module.exports = (db) => {
       .catch((err) => res.status(500).json({ error: err.message }));
   });
 
+  /************************/
+  /***** Saved Jobs  *****/
+  /************************/
+  /**
+   * description: retrieves all saved jobs for a user
+   */
+  router.get("/saved", (req, res) => {
+    db.query(
+      `
+      SELECT *
+      FROM saved_jobs
+    `
+    )
+      .then((data) => {
+        res.send(data.rows);
+      })
+      .catch((err) => console.log("error: ", err));
+  });
+
   /**
    * description: saves a job to the user's saved jobs
    */
@@ -44,8 +64,7 @@ module.exports = (db) => {
       job_apply_link,
       job_description,
       unique_job_id,
-      user,
-      image,
+      user_id,
     } = req.body;
 
     db.query(
@@ -56,9 +75,8 @@ module.exports = (db) => {
             job_posted_at_datetime_utc,
             job_apply_link,
             job_description,unique_job_id,
-            user_id,
-            image)
-          VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+            user_id)
+          VALUES ($1, $2, $3, $4, $5, $6, $7);
         `,
       [
         employer_name,
@@ -67,12 +85,11 @@ module.exports = (db) => {
         job_apply_link,
         job_description,
         unique_job_id,
-        user,
-        image,
+        user_id,
       ]
     )
-      .then((data) => {
-        return res.status(200).send();
+      .then((res) => {
+        res.send(200);
       })
       .catch((err) => console.log("error", err));
   });
@@ -80,8 +97,9 @@ module.exports = (db) => {
   /**
    * description: deletes a job from the user's saved jobs
    */
-  router.post("/saved/delete/:jobid", (req, res) => {
+  router.delete("/saved/:jobid", (req, res) => {
     const jobid = req.params.jobid;
+
     db.query(
       `
           DELETE FROM saved_jobs
@@ -89,42 +107,27 @@ module.exports = (db) => {
         `,
       [jobid]
     )
-      .then((data) => {
-        return res.status(200).send();
-      })
-      .catch((err) => console.log("error", err));
-  });
-
-  router.post("/delete/:unique_job_id", (req, res) => {
-    const unique_job_id = req.params.unique_job_id;
-    db.query(
-      `
-          DELETE FROM saved_jobs
-          WHERE unique_job_id = $1;
-        `,
-      [unique_job_id]
-    )
       .then(() => {
-        return res.status(200).send();
+        console.log("delete complete");
       })
       .catch((err) => console.log("error", err));
   });
 
-  router.get("/saved", (req, res) => {
-    const user_id = req.session.user_id;
-    db.query(
-      `
-      SELECT *
-      FROM saved_jobs
-      WHERE user_id = $1
-    `,
-      [user_id]
-    )
-      .then((data) => {
-        res.send(data.rows);
-      })
-      .catch((err) => console.log("error: ", err));
-  });
+  // router.post("/delete/:unique_job_id", (req, res) => {
+  //   console.log("delete req params plinky:", req.params.unique_job_id);
+  //   const unique_job_id = req.params.unique_job_id;
+  //   db.query(
+  //     `
+  //         DELETE FROM saved_jobs
+  //         WHERE unique_job_id = $1;
+  //       `,
+  //     [unique_job_id]
+  //   )
+  //     .then(() => {
+  //       console.log("delete moo");
+  //     })
+  //     .catch((err) => console.log("error", err));
+  // });
 
   return router;
 };

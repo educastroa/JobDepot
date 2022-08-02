@@ -11,7 +11,6 @@ module.exports = (db) => {
     const education = req.body.education;
     const user_id = req.body.user;
 
-
     db.query(
       `
           INSERT INTO resume
