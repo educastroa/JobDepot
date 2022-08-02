@@ -105,7 +105,7 @@ module.exports = (db) => {
       [unique_job_id]
     )
       .then(() => {
-        console.log("delete moo");
+        return res.status(200).send();
       })
       .catch((err) => console.log("error", err));
   });
