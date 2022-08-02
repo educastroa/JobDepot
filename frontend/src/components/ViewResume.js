@@ -24,23 +24,23 @@ export default function ViewResume() {
           {resume.map((resumeinfo) => (
             <li key={resumeinfo.id}>
               <li>
-                <label for="full-name">Full Name</label>
+                <label htmlFor="full-name">Full Name</label>
                 <h4>{resumeinfo.full_name}</h4>
               </li>
               <li>
-                <label for="full-name">Contact Information</label>
+                <label htmlFor="full-name">Contact Information</label>
                 <h4>{resumeinfo.contact_information}</h4>
               </li>
               <li>
-                <label for="full-name">Work Experience</label>
+                <label htmlFor="full-name">Work Experience</label>
                 <h4>{resumeinfo.work_experience}</h4>
               </li>
               <li>
-                <label for="full-name">Education</label>
+                <label htmlFor="full-name">Education</label>
                 <h4>{resumeinfo.education}</h4>
               </li>
               <li>
-                <label for="full-name">Skills</label>
+                <label htmlFor="full-name">Skills</label>
                 <h4>{resumeinfo.skills}</h4>
               </li>
             </li>

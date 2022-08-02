@@ -57,7 +57,6 @@ function App() {
                 element={
                   <RequireAuth>
                     <Header />
-
                     <div className="scrollbar scrollbar-primary  mt-5 mx-auto">
                       <ResumeBuilder />
                     </div>

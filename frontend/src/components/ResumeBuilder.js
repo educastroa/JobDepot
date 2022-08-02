@@ -46,6 +46,7 @@ export default function ResumeBuilder(props) {
   };
 
   return (
+
     <form className="resumebuildupload">
       <ul className="contact__right">
         <li className="line-item">
@@ -140,7 +141,7 @@ export default function ResumeBuilder(props) {
           />
 
           <label htmlFor="file-upload" id="file-drag">
-            <img id="file-image" src="#" alt="Preview" className="hidden"></img>
+            <img id="file-image" alt="Preview" className="hidden"></img>
             <div id="start">
               <i className="fa fa-download" aria-hidden="true"></i>
               <div>Select a file or drag here</div>

@@ -37,7 +37,6 @@ module.exports = (db) => {
    * description: saves a job to the user's saved jobs
    */
   router.post("/saved", (req, res) => {
-    console.log('test', req.body);
     const {
       employer_name,
       job_title,
@@ -97,7 +96,6 @@ module.exports = (db) => {
   });
 
   router.post("/delete/:unique_job_id", (req, res) => {
-    console.log("delete req params plinky:", req.params.unique_job_id);
     const unique_job_id = req.params.unique_job_id;
     db.query(
       `
@@ -107,7 +105,7 @@ module.exports = (db) => {
       [unique_job_id]
     )
       .then(() => {
-        console.log("delete moo");
+        return res.status(200).send();
       })
       .catch((err) => console.log("error", err));
   });

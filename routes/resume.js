@@ -11,7 +11,6 @@ module.exports = (db) => {
     const education = req.body.education;
     const user_id = req.body.user;
 
-    console.log("req.body here:", req.body);
 
     db.query(
       `
@@ -45,7 +44,6 @@ module.exports = (db) => {
     `
     )
       .then((data) => {
-        console.log("result rows here1: ", data.rows);
         res.send(data.rows);
       })
       .catch((err) => console.log("error: ", err));
