@@ -51,15 +51,21 @@
 
 - Share Jobs Feature
 
-![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/SharedJobFeature.png?raw=true "Share Jobs Feature")
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/ShareJobFeature.png?raw=true "Share Jobs Feature")
 
 
 ## Setup
 
 Install dependencies with `npm install`.
 
-## Running Webpack Development Server
+## Running React Development Server
 
 ```sh
-npm start
+npm start from inside the Frontend folder
+```
+
+## Running Node/Express Development Server
+
+```sh
+npm start from Root
 ```
