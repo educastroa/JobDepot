@@ -16,6 +16,7 @@
 - [React](https://reactjs.org/)
 - [CSS](https://www.w3.org/Style/CSS/)
 - [Axios](https://github.com/axios/axios)
+- [Bootstrap](https://getbootstrap.com/)
 
 ## Back-end
 
@@ -28,7 +29,29 @@
 
 # Screenshots
 
-![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/JobSearch.png?raw=true "Optional Title")
+- Login Page
+
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/LoginPage.png?raw=true "Login Page")
+
+- Register Page
+
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/RegisterPage.png?raw=true "Register Page")
+
+- Job Seach Page
+
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/JobSearch.png?raw=true "Job Seach Page")
+
+- Salary Search Page
+
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/SalarySearch.png?raw=true "Salary Search Page")
+
+- Shared Jobs Page
+
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/SharedJobs.png?raw=true "Shared Jobs Page")
+
+- Share Jobs Feature
+
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/SharedJobFeature.png?raw=true "Share Jobs Feature")
 
 
 ## Setup
