@@ -28,7 +28,7 @@
 
 # Screenshots
 
-![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/Job%20Search.png?raw=true "Optional Title")
+![Alt text](https://github.com/educastroa/JobDepot/blob/cleanup/refactor/screenshots/JobSearch.png?raw=true "Optional Title")
 
 
 ## Setup
